@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="product"></div>
+<div id="cart"></div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
+<script src="./assets/js/classes/Product.js"></script>
+<script src="./assets/js/classes/User.js"></script>
+<script src="./assets/js/classes/Customer.js"></script>
+<script src="./assets/js/classes/Wine.js"></script>
+<script src="./assets/js/classes/ShoppingCart.js"></script>
+<script>
+    let Jose = new Customer(1, "Jose Luis", "Calleja Garcia", new Date('January 28 1994'), "Spain", "501 Pacific Street, Vancouver, BC, 19005", "joseluis@hotmail.com", "949224233");
+    let Vino = new Wine(1, "Rioja del Duero", 10.00, "Rioja", "https://www.merca2.es/wp-content/uploads/2019/10/ribera-del-duero.jpg", "Esto es un vino de españa que compro y mi padre se lo bebe cuando me descuido", "500ml", 5, "Vino");
+    let Vino2 = new Wine(2, "Caperucita Tinta", 1.67, "Vino de Cuento", "https://images.vivino.com/thumbs/9JP1mcgtT3Cafmji792scw_pb_x960.png", "Este vino es lo mejor que existe...", "750ml", 2, "mas vino");
+    let Cesta = new ShoppingCart(1, Jose, "");
+
+    $("#product").append("" +
+        "<ul>" +
+        "<li>" +
+        "<img width='100' src='"+Vino.productImage+"'>"+
+        Vino.productName+
+        "<button id='"+Vino.productID+"' class='btn-plus'>+</button>" +
+        " <button id='"+Vino.productID+"' class='btn-less'>-</button>" +
+        "</li>" +
+        "<li>" +
+        "<img width='50' src='"+Vino2.productImage+"'>"
+        +Vino2.productName+"" +
+        "<button id='"+Vino2.productID+"' class='btn-plus'>+</button>" +
+        "<button id='"+Vino2.productID+"' class='btn-less'>-</button></li></ul>")
+
+
+    console.log(Cesta)
+
+    $(".btn-plus").on("click", function(){
+        if(this.id == Vino.productID){
+            Cesta.addProducts(Vino,  1);
+            console.log(Vino)
+
+        } else {
+            Cesta.addProducts(Vino2,  1);
+            console.log(Vino2)
+        }
+        updateCesta();
+        console.log(Cesta)
+
+    });
+
+    $(".btn-less").on("click", function(){
+        if(this.id == Vino.productID){
+            Cesta.withoutProduct(Vino,  1);
+            console.log(Vino)
+        } else {
+            Cesta.withoutProduct(Vino2,  1);
+            console.log(Vino2)
+        }
+        updateCesta();
+        console.log(Cesta)
+    });
+    updateCesta();
+    function updateCesta(){
+        let container = $("#cart");
+        container.html("");
+
+        let ul = $('<ul></ul>');
+        for (var [Product, quantity] of Cesta.products) {
+            let li = $("<li></li>");
+            li.append(Product.productName + " ->  <span>"+ quantity +"</span>");
+
+            ul.append(li);
+        }
+        container.append(ul);
+        container.append("<h2> Total: $"+ Cesta.getTotalPrice()+"</h2>")
+        container.css("border", "1px solid black")
+    }
+
+</script>
+</body>
+</html>
