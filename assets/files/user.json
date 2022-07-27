@@ -1,0 +1,121 @@
+[{
+  "userID": 1,
+  "email": "harry@tamwood.com",
+  "password": "tamwood123",
+  "firstName": "Harry",
+  "lastName": "Porter",
+  "bornDate": "1/2/2010",
+  "country": "Canada",
+  "address": "1234 Comox Crossing, Richmond",
+  "phoneNumber": "375-985-5054"
+}, {
+  "userID": 2,
+  "email": "milad@tamwood.com",
+  "password": "tamwood123",
+  "firstName": "Milad",
+  "lastName": "Torabi",
+  "bornDate": "12/24/1970",
+  "country": "Iran",
+  "address": "7599 Dahle Place, Surrey",
+  "phoneNumber": "859-476-4885"
+}, {
+  "userID": 3,
+  "email": "kcleugher2@china.com",
+  "password": "qGkrcXINnQ",
+  "firstName": "Kellina",
+  "lastName": "Cleugher",
+  "bornDate": "1/2/2022",
+  "country": "China",
+  "address": "82289 Sommers Crossing, Richmond",
+  "phoneNumber": "375-935-5043"
+}, {
+  "userID": 4,
+  "email": "oyakovitch3@ucoz.ru",
+  "password": "sovVgv",
+  "firstName": "Ody",
+  "lastName": "Yakovitch",
+  "bornDate": "12/24/2021",
+  "country": "Poland",
+  "address": "2331 Prairie Rose Place, Richmond",
+  "phoneNumber": "859-475-9381"
+}, {
+  "userID": 5,
+  "email": "nannable4@bandcamp.com",
+  "password": "XjKhL7zXt",
+  "firstName": "Nicola",
+  "lastName": "Annable",
+  "bornDate": "1/22/2022",
+  "country": "China",
+  "address": "0764 Parkside Terrace, Coquitlam",
+  "phoneNumber": "618-827-5875"
+}, {
+  "userID": 6,
+  "email": "thazeltine5@amazon.de",
+  "password": "LApUnf8yux9o",
+  "firstName": "Trixy",
+  "lastName": "Hazeltine",
+  "bornDate": "5/19/2022",
+  "country": "China",
+  "address": "86 Sycamore Court, Burnaby",
+  "phoneNumber": "553-577-7982"
+}, {
+  "userID": 7,
+  "email": "lbraunton6@paginegialle.it",
+  "password": "RWQWxwH63Q8",
+  "firstName": "Leonanie",
+  "lastName": "Braunton",
+  "bornDate": "12/5/2021",
+  "country": "Czech Republic",
+  "address": "435 Anderson Alley, Abbotsford",
+  "phoneNumber": "396-405-9999"
+}, {
+  "userID": 8,
+  "email": "akemery7@tuttocitta.it",
+  "password": "0kTT08ha6Wv",
+  "firstName": "Alastair",
+  "lastName": "Kemery",
+  "bornDate": "9/17/2021",
+  "country": "Philippines",
+  "address": "2110 Orin Parkway, Surrey",
+  "phoneNumber": "134-943-7779"
+}, {
+  "userID": 9,
+  "email": "aendacott8@wikimedia.org",
+  "password": "kCJ1jCK",
+  "firstName": "Aindrea",
+  "lastName": "Endacott",
+  "bornDate": "3/27/2022",
+  "country": "Indonesia",
+  "address": "0 Forest Run Crossing, Burnaby",
+  "phoneNumber": "849-734-9144"
+}, {
+  "userID": 10,
+  "email": "kmcgeachie9@lycos.com",
+  "password": "Wz0F1YgML",
+  "firstName": "Kesley",
+  "lastName": "McGeachie",
+  "bornDate": "12/1/2021",
+  "country": "Peru",
+  "address": "69 Crownhardt Junction, North Vancouver",
+  "phoneNumber": "333-684-7059"
+}, {
+  "userID": 11,
+  "email": "rsylvaine0@quantcast.com",
+  "password": "K3nCbnflH",
+  "firstName": "Rikki",
+  "lastName": "Sylvaine",
+  "bornDate": "4/4/2022",
+  "country": "Thailand",
+  "address": "5738 Tennessee Point, Vancouver",
+  "phoneNumber": "552-385-5845"
+}, {
+  "userID": 12,
+  "email": "qzavittieri1@bandcamp.com",
+  "password": "buuWK7rrn",
+  "firstName": "Quintina",
+  "lastName": "Zavittieri",
+  "bornDate": "6/11/2022",
+  "country": "China",
+  "address": "453 Forster Point, Vancouver",
+  "phoneNumber": "997-348-2916"
+}]
