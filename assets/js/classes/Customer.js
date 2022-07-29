@@ -17,4 +17,30 @@ class Customer extends User {
     constructor(userID, firstName, lastName, bornDate, country, address, email, phoneNumber) {
         super(userID, firstName, lastName, bornDate, country, address, email, phoneNumber);
     }
+
+    //METHODS
+    /** Returns
+     * This method get customer age
+     * @return {number}
+     */
+    getAge() {
+        let today = new Date();
+        let age = 0;
+        let month = 0;
+        age = today.getFullYear() - this.bornDate.getFullYear();
+        month = today.getMonth() - this.bornDate.getMonth();
+
+        if (month < 0 || (month === 0 && today.getDate() < this.bornDate.getDate())) {
+            age--;
+        }
+        return age;
+    }
+
+    /** Returns
+     * This method check if the customer is bigger than 18
+     * @return {boolean}
+     */
+    isOlder() {
+        return this.getAge() >= 18;
+    }
 }

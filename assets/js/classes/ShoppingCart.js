@@ -4,9 +4,9 @@
  * @version 1.0
  */
 class ShoppingCart{
-    #shoppingCartID;
-    #User;
-    #products = new Map();
+    shoppingCartID;
+    User;
+    products = new Map();
 
     /**
      *
@@ -15,44 +15,13 @@ class ShoppingCart{
      * @param products {Map}
      */
     constructor(shoppingCartID, User, products = "") {
-        this.#shoppingCartID = shoppingCartID;
-        this.#User = User;
+        this.shoppingCartID = shoppingCartID;
+        this.User = User;
         if(products !== ""){
-            this.#products = products;
+            this.products = products;
         }
     }
 
-
-    //GETTERS AND SETTERS
-
-    /**
-     * @return {number} get Shopping Cart id
-     */
-    get shoppingCartID() {
-        return this.#shoppingCartID;
-    }
-
-    /**
-     * @return {User} get User object
-     */
-    get User() {
-        return this.#User;
-    }
-
-    /**
-     *
-     * @param User
-     */
-    set User(User) {
-        this.#User = User;
-    }
-
-    /**
-     * @return {Map} get products and quantity
-     */
-    get products() {
-        return this.#products;
-    }
 
     //METHODS
 
@@ -66,17 +35,17 @@ class ShoppingCart{
        try{
            if(isNaN(quantity)) throw new Error("The Quantity is not a number");
            if(quantity <= 0) throw new Error("The Quantity less than 0");
-           if(this.#products.has(product)){
+           if(this.products.has(product)){
                if(product.checkStock(quantity)){
                    product.updateStock(-quantity);
-                   this.#products.set(product, this.#products.get(product) + quantity);
+                   this.products.set(product, this.products.get(product) + quantity);
                } else {
                    throw new Error("You cannot add more of "+product.productName+" because it does not have enough stock");
                }
            } else {
                if(product.checkStock(quantity)){
                    product.updateStock(-quantity);
-                   this.#products.set(product, quantity);
+                   this.products.set(product, quantity);
                } else {
                    throw new Error("You cannot add more of "+product.productName+" because it does not have enough stock");
                }
@@ -99,13 +68,13 @@ class ShoppingCart{
         try{
             if(isNaN(quantity)) throw new Error("The Quantity is not a number");
             if(quantity <= 0) throw new Error("The Quantity less than 0");
-            if(!this.#products.has(product)) throw new Error("The product doesn't exist on the Map");
-            if(this.#products.get(product) - quantity <= 0 || !this.#products.has(product)){
+            if(!this.products.has(product)) throw new Error("The product doesn't exist on the Map");
+            if(this.products.get(product) - quantity <= 0 || !this.products.has(product)){
                 product.updateStock(quantity);
-                this.#products.delete(product);
+                this.products.delete(product);
             } else {
                 product.updateStock(quantity);
-                this.#products.set(product, this.#products.get(product) - quantity);
+                this.products.set(product, this.products.get(product) - quantity);
             }
 
             return true;
@@ -122,10 +91,10 @@ class ShoppingCart{
      getTotalPrice(){
         let totalPrice = 0;
 
-        if(this.#products.size === 0){
+        if(this.products.size === 0){
             return totalPrice.toFixed(2);
         } else {
-            for (var [Product, quantity] of this.#products) {
+            for (var [Product, quantity] of this.products) {
                 totalPrice += parseFloat(Product.productPrice * quantity);
             }
         }
