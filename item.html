@@ -1,54 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://gulp-project-static.storage.googleapis.com/LEGACY/favicon.png" rel="icon" type="image/png">
-
-  <title>Product Page</title>
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <!-- FONT AWSOME -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-  <script src="https://rawgit.com/michaelbromley/angularUtils-pagination/master/dirPagination.js"></script>
-
-</head>
-
-<body ng-app="productPage">
-  <!-- HEADER START -->
-  <header>
-    <h1>
-      <a href="./index.html">Liquor Stores<i class="fa-solid fa-martini-glass"></i></a>
-    </h1>
-  </header>
-  <!-- HEADER END -->
-
-  <!-- NAV START -->
-  <nav class="gnav">
-
-    <ul class="gnav_wrapper">
-      <li><a href="./beer.html">Beer</a></li>
-      <li><a href="./wine.html">Wine</a></li>
-      <li><a href="./sake.html">Sake</a></li>
-      <li><a href="./other.html">Other</a></li>
-      <li><a href="./index.html">Logout</a></li>
-      <li><a href="./login.html">Login</a></li>
-      <li><a href="./sign-up.html">Sign Up</a></li>
-      <li><a href="./account-info.html"><i class="fa-solid fa-user"></i></a></li>
-      <li><a href="./cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-    </ul>
-  </nav>
-
-  <!-- NAV END -->
-
-  <main>
+  <main ng-controller="itemCtrl">
     <div class="item-detail">
       <img src="{{product.productImage}}" alt="{{product.productImage}} picture">
       <aside>
         <h3>{{product.productName}}</h3>
-        <div><span>{{product.productSize}}</span><span>${{product.productPrice}}</span></div>
+        <div><span>{{product.productSize}}</span><br><span>${{product.productPrice}}</span></div>
         <p>{{product.productDescription}}</p>
         <div class="quantity-buttun">
           <div class="quantity">

@@ -1,5 +1,5 @@
-<div class="hero-wine">
-  <h2>Wine</h2>
+<div class="hero">
+  <h2>Let's beat the heat!</h2>
   <div class="wrap">
     <div class="search">
       <input type="text" class="searchTerm" placeholder="What are you looking for?" ng-model="nameSearch">
@@ -10,7 +10,7 @@
   </div>
 </div>
 
-<main ng-controller="wines">
+<main ng-controller="allProducts">
   <h2>Our Product</h2>
   <div class="items-wrap">
     <div class="item" ng-repeat="product in productsArray | filter:nameSearch | limitTo :elementsPerPage:actualPage">

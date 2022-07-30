@@ -1,0 +1,160 @@
+<script>
+  let jsonApp = angular.module("jsonApp", ["ngRoute"]);
+  const wines = new Map();
+  const beers = new Map();
+  const spirits = new Map();
+  const sakes = new Map();
+  const totalProducts = new Map();
+  const maxItems = 50;
+  var paginationNumber = 0;
+
+
+  //NG ROUTES
+
+  jsonApp.config(function ($routeProvider){
+    $routeProvider
+            .when("/",{
+              templateUrl:"./allProducts.html"
+            })
+            .when("/wine",{
+              templateUrl:"./wine.html"
+            })
+            .when("/sake",{
+              templateUrl:"./sake.html"
+            })
+            .when("/beer",{
+              templateUrl:"./beer.html"
+            })
+            .when("/other",{
+              templateUrl:"./other.html"
+            })
+
+    jsonApp.controller('aboutCtrl',($scope,$rootScope, $location)=>{
+      let searchObj = $location.search();
+      let actualDate = new Date();
+      if(searchObj.name !== undefined){
+        $scope.name = searchObj.name;
+        $scope.age = actualDate.getFullYear() - parseInt(searchObj.age);
+        $scope.country = searchObj.country;
+      } else {
+        $scope.err = true;
+      }
+    });
+  })
+
+  //____ NG ROUTES
+
+
+
+  jsonApp.controller("loadData",($http, $rootScope)=>{
+    $http.get("./assets/files/products.json").then(
+            (products)=>{
+              $rootScope.id;
+              //Populate wines array
+              products.data.wines.forEach((wine)=>{
+                wines.set(wine.id, new Wine(wine.id, wine.name, wine.price, wine.brand, wine.img, wine.description, wine.size, wine.stock, wine.category))
+                totalProducts.set(wine.id, new Wine(wine.id, wine.name, wine.price, wine.brand, wine.img, wine.description, wine.size, wine.stock, wine.category))
+                $rootScope.id = parseInt(wine.id);
+              });
+
+              //Populate Beers array
+              products.data.beers.forEach((beer)=>{
+                $rootScope.id += 1;
+                beers.set(beer.id, new Beer(beer.id, beer.name, beer.price, beer.brand, beer.img, beer.description, beer.size, beer.stock, beer.category))
+                totalProducts.set($rootScope.id, new Beer(beer.id, beer.name, beer.price, beer.brand, beer.img, beer.description, beer.size, beer.stock, beer.category))
+
+              });
+
+              //Populate spirits array
+              products.data.spirits.forEach((spirit)=>{
+                $rootScope.id += 1;
+                spirits.set(spirit.id, new Spirits(spirit.id, spirit.name, spirit.price, spirit.brand, spirit.img, spirit.description, spirit.size, spirit.stock, spirit.category))
+                totalProducts.set($rootScope.id, new Spirits(spirit.id, spirit.name, spirit.price, spirit.brand, spirit.img, spirit.description, spirit.size, spirit.stock, spirit.category))
+
+              });
+
+              //Populate sakes array
+              products.data.sakes.forEach((sake)=>{
+                sakes.set(sake.id, new Sake(sake.id, sake.name, sake.price, sake.brand, sake.img, sake.description, sake.size, sake.stock, sake.category))
+              });
+
+              //Change Map to array for can display the information on the page.
+              $rootScope.updateArray = () =>{
+                $rootScope.productsArray = Array.from(totalProducts,([id,product])=>({id,product}));
+              }
+              $rootScope.updateArray();
+
+              //---------------PAGINATION NUMBER---------------------------
+              paginationNumber = parseInt((totalProducts.size/maxItems));
+              $rootScope.paginationNumber = [];
+
+              //put inside the array the total pages for render in HTML
+              for(var i =1; i<= paginationNumber; i++){
+                $rootScope.paginationNumber.push(i);
+              }
+              $rootScope.pageSize = 5;
+              $rootScope.actualPage = 0;
+              $rootScope.elementsPerPage = maxItems;
+              //---------------END PAGINATION---------------------------
+
+              $rootScope.btnClick = ($event, number) =>{
+                document.querySelectorAll(".btn-pag").forEach((element)=>{
+                  element.classList.remove("active");
+                })
+                $event.target.className += " active";
+                $rootScope.actualPage = maxItems*number;
+              }
+
+            },
+            (error)=>{
+              console.log(error.statusText)
+              alert("An error ocurred to get information from JSON. Error: "+ error.status+" "+error.statusText)
+            }
+    );
+
+  });
+
+
+
+  //PRODUCT PAGE -- Item.html
+  let productPage = angular.module("productPage", []);
+  productPage.run(($http, $rootScope) =>{
+    $rootScope.mierda = new Map();
+    $http.get("./assets/files/products.json").then(
+            (products)=>{
+              //Populate wines array
+              products.data.wines.forEach((wine)=>{
+                wines.set(wine.id, new Wine(wine.id, wine.name, wine.price, wine.brand, wine.img, wine.description, wine.size, wine.stock, wine.category))
+              });
+
+              //Populate Beers array
+              products.data.beers.forEach((beer)=>{
+                beers.set(beer.id, new Beer(beer.id, beer.name, beer.price, beer.brand, beer.img, beer.description, beer.size, beer.stock, beer.category))
+              });
+
+              //Populate spirits array
+              products.data.spirits.forEach((spirit)=>{
+                spirits.set(spirit.id, new Spirits(spirit.id, spirit.name, spirit.price, spirit.brand, spirit.img, spirit.description, spirit.size, spirit.stock, spirit.category))
+              });
+
+              //Populate sakes array
+              products.data.sakes.forEach((sake)=>{
+                sakes.set(sake.id, new Sake(sake.id, sake.name, sake.price, sake.brand, sake.img, sake.description, sake.size, sake.stock, sake.category))
+              });
+
+
+              $rootScope.URLsearch = window.location.search;
+              $rootScope.id = $rootScope.URLsearch.split("=");
+              $rootScope.product = wines.get($rootScope.id[1].toString());
+              console.log($rootScope.product)
+
+            },
+            (error)=>{
+              console.log(error.statusText)
+              alert("An error ocurred to get information from JSON. Error: "+ error.status+" "+error.statusText)
+            }
+    );
+  });
+  // -- END PRODUCT PAGE
+
+</script>
