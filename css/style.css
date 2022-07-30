@@ -20,10 +20,28 @@ main {
   padding: 50px;
   flex: 1;
 }
+h1 {
+  color: #333;
+  font-size: 38px;
+}
 
 h2 {
-  font-size: 30px;
+  color: #555;
+  font-size: 28px;
   margin: 20px 0;
+}
+
+h3 {
+  font-size: 24px;
+  color: #555;  
+}
+
+p {
+  color: #888;
+}
+
+li {
+  color: #888;
 }
 
 /* FOOTER START */
@@ -109,6 +127,9 @@ footer aside {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.hero h2 {
   color: #fff;
 }
 
@@ -122,6 +143,9 @@ footer aside {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.hero-wine h2{
   color: #fff;
 }
 
@@ -135,7 +159,10 @@ footer aside {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #fff;
+}
+
+.hero-beer h2 {
+color: #fff;
 }
 
 .hero-other {
@@ -148,6 +175,9 @@ footer aside {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.hero-other h2 {
   color: #fff;
 }
 
@@ -161,9 +191,27 @@ footer aside {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.hero-sake h2 {
   color: #fff;
 }
 
+.hero-terms {
+  width: 100%;
+  height: 300px;
+  background-image: url(/img/terms.png);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-terms h2 {
+  color: #fff;
+}
 /* HERO END */
 
 /* SERACH BAR START */
@@ -654,3 +702,31 @@ form {
 }
 
 /* USER OMFOMATION END */
+
+/* TERMS AND SRERVICE START */
+.terms {
+  margin: 0 10%;
+}
+
+
+
+.terms section {
+  width: 100%;
+  padding: 10px 0;
+}
+.terms div {
+  line-height:28px;
+  width: 100%;
+  padding: 10px 0;
+}
+.terms  p {
+  text-align: left;
+}
+.terms  ul {
+  text-align: left;
+}
+.terms  li {
+  text-align: left;
+  padding:5px;
+}
+/* TERMS AND SRERVICE END */
