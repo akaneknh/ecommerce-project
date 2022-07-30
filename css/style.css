@@ -639,6 +639,7 @@ select {
 form {
   display: flex;
   flex-direction: column;
+  justify-content:  center;
   row-gap: 20px;
 }
 
@@ -647,19 +648,30 @@ form {
   flex-direction: column;
   align-items: flex-start;
 }
+.form-item label {
+  font-weight: 500;
+  color: #555555;
+}
 
 .form-item input {
   height: 20px;
   width: 200px;
-  border: 0.5px solid #666666;
+  border: 1.5px solid #888;
   border-radius: 5px;
-  font-size: 18px;
+  font-size: 14px;
   padding: 5px 10px;
+   outline: none;
 }
 
-.form-footer a {
-  font-size: 10px;
-  color: #333;
+.form-item input:focus {
+  border: 1.5px solid #ae6e62;
+}
+
+.check {
+  display: flex;
+  column-gap: 10px;
+  color: #888;
+  font-size: 16px;
 }
 
 /* LOGIN END */
