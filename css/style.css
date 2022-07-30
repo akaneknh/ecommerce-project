@@ -103,6 +103,7 @@ footer aside {
 
 .item a:hover{
  background-color: rgba(232, 232, 232, 0.304);
+ transition: 0.3s ;
 }
 
 .item-pic {
@@ -347,7 +348,7 @@ header i {
 }
 
 .pager .pagination li a {
-  color: #333;
+  color: #555;
   vertical-align: middle;
   position: absolute;
   top: 0;
@@ -464,6 +465,12 @@ select {
 
 .cart-summary h3 {
   width: 300px;
+  font-size: 18px;
+}
+
+.cart-summary span {
+  color: #555;
+  font-size: 18px;
 }
 
 .checkout-btn {
@@ -503,7 +510,7 @@ select {
 .confirm-order-wrap {
   margin-top: 30px;
   margin-bottom: 30px;
-  width: 800px;
+  width: 900px;
   display: flex;
   flex-direction: row;
   column-gap: 80px;
@@ -524,9 +531,20 @@ select {
   text-align: left;
 }
 
+.checkout-item h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.checkout-item span {
+  font-size: 18px;
+  font-weight: 500;
+  color: #555;
+}
+
 .back {
   text-decoration: none;
-  color: #333;
+  color: #555;
 }
 
 .back:hover{
