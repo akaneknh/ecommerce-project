@@ -30,6 +30,18 @@ jsonApp.config(function ($routeProvider){
         .when("/item",{
             templateUrl:"./item.html"
         })
+        .when("/login",{
+            templateUrl:"./login.html"
+        })
+        .when("/order",{
+            templateUrl:"./order.html"
+        })
+        .when("/cart",{
+            templateUrl:"./cart.html"
+        })
+        .when("/privacy",{
+            templateUrl:"./privacyPolicy.html"
+        })
 });
 
 //Get the elements from the JSON file
@@ -95,11 +107,30 @@ jsonApp.controller('allProducts',($scope,$rootScope, $location)=>{
 
     //Pagination element
     $scope.btnClick = ($event, number) =>{
-        document.querySelectorAll(".btn-pag").forEach((element)=>{
-            element.classList.remove("active");
-        })
-        $event.target.className += " active";
-        $scope.actualPage = maxItems*number -50 ;
+        if($event.target.id == "back" || $event.target.id == "next"){
+            $scope.number = parseInt(document.querySelector(".active").innerText) - 1;
+           if($event.target.id == "back" ){
+               if($scope.number != 0){
+                   document.querySelector(".active").classList.remove("active");
+                   document.querySelectorAll(".btn-pag")[parseInt($scope.number - 1) ].classList.add("active");
+                   $scope.actualPage -= 50;
+               }
+           } else {
+               if($scope.number != document.querySelectorAll(".btn-pag").length-1){
+                   document.querySelector(".active").classList.remove("active");
+                   document.querySelectorAll(".btn-pag")[parseInt($scope.number  + 1)].classList.add("active");
+                   $scope.actualPage += 50;
+               }
+           }
+
+        } else {
+            document.querySelectorAll(".btn-pag").forEach((element)=>{
+                element.classList.remove("active");
+            })
+            $event.target.className += " active";
+            $scope.actualPage = maxItems*number -50;
+        }
+
     }
 
 });
@@ -124,11 +155,30 @@ jsonApp.controller('wines',($scope,$rootScope, $location)=>{
 
     //Pagination element
     $scope.btnClick = ($event, number) =>{
-        document.querySelectorAll(".btn-pag").forEach((element)=>{
-            element.classList.remove("active");
-        })
-        $event.target.className += " active";
-        $scope.actualPage = maxItems*number -50 ;
+        if($event.target.id == "back" || $event.target.id == "next"){
+            $scope.number = parseInt(document.querySelector(".active").innerText) - 1;
+            if($event.target.id == "back" ){
+                if($scope.number != 0){
+                    document.querySelector(".active").classList.remove("active");
+                    document.querySelectorAll(".btn-pag")[parseInt($scope.number - 1) ].classList.add("active");
+                    $scope.actualPage -= 50;
+                }
+            } else {
+                if($scope.number != document.querySelectorAll(".btn-pag").length-1){
+                    document.querySelector(".active").classList.remove("active");
+                    document.querySelectorAll(".btn-pag")[parseInt($scope.number  + 1)].classList.add("active");
+                    $scope.actualPage += 50;
+                }
+            }
+
+        } else {
+            document.querySelectorAll(".btn-pag").forEach((element)=>{
+                element.classList.remove("active");
+            })
+            $event.target.className += " active";
+            $scope.actualPage = maxItems*number -50;
+        }
+
     }
 });
 
@@ -153,11 +203,30 @@ jsonApp.controller('sakes',($scope,$rootScope, $location)=>{
 
     //Pagination element
     $scope.btnClick = ($event, number) =>{
-        document.querySelectorAll(".btn-pag").forEach((element)=>{
-            element.classList.remove("active");
-        })
-        $event.target.className += " active";
-        $scope.actualPage = maxItems*number -50 ;
+        if($event.target.id == "back" || $event.target.id == "next"){
+            $scope.number = parseInt(document.querySelector(".active").innerText) - 1;
+            if($event.target.id == "back" ){
+                if($scope.number != 0){
+                    document.querySelector(".active").classList.remove("active");
+                    document.querySelectorAll(".btn-pag")[parseInt($scope.number - 1) ].classList.add("active");
+                    $scope.actualPage -= 50;
+                }
+            } else {
+                if($scope.number != document.querySelectorAll(".btn-pag").length-1){
+                    document.querySelector(".active").classList.remove("active");
+                    document.querySelectorAll(".btn-pag")[parseInt($scope.number  + 1)].classList.add("active");
+                    $scope.actualPage += 50;
+                }
+            }
+
+        } else {
+            document.querySelectorAll(".btn-pag").forEach((element)=>{
+                element.classList.remove("active");
+            })
+            $event.target.className += " active";
+            $scope.actualPage = maxItems*number -50;
+        }
+
     }
 });
 
@@ -181,11 +250,34 @@ jsonApp.controller('spirits',($scope,$rootScope, $location)=>{
 
     //Pagination element
     $scope.btnClick = ($event, number) =>{
-        document.querySelectorAll(".btn-pag").forEach((element)=>{
-            element.classList.remove("active");
-        })
-        $event.target.className += " active";
-        $scope.actualPage = maxItems*number -50 ;
+        if($event.target.id == "back" || $event.target.id == "next"){
+            $scope.number = parseInt(document.querySelector(".active").innerText) - 1;
+            console.log("Position - "+ $scope.number)
+            if($event.target.id == "back" ){
+                if($scope.number != 0){
+                    document.querySelector(".active").classList.remove("active");
+                    document.querySelectorAll(".btn-pag")[parseInt($scope.number - 1) ].classList.add("active");
+                    $scope.actualPage -= 50;
+                    console.log("New - " +parseInt($scope.number +1))
+                }
+            } else {
+                if($scope.number != document.querySelectorAll(".btn-pag").length-1){
+                    document.querySelector(".active").classList.remove("active");
+                    document.querySelectorAll(".btn-pag")[parseInt($scope.number  + 1)].classList.add("active");
+                    $scope.actualPage += 50;
+                    console.log("New - " +parseInt($scope.number+1))
+
+                }
+            }
+
+        } else {
+            document.querySelectorAll(".btn-pag").forEach((element)=>{
+                element.classList.remove("active");
+            })
+            $event.target.className += " active";
+            $scope.actualPage = maxItems*number -50;
+        }
+
     }
 });
 
@@ -210,11 +302,34 @@ jsonApp.controller('beers',($scope,$rootScope, $location)=>{
 
     //Pagination element
     $scope.btnClick = ($event, number) =>{
-        document.querySelectorAll(".btn-pag").forEach((element)=>{
-            element.classList.remove("active");
-        })
-        $event.target.className += " active";
-        $scope.actualPage = maxItems*number -50 ;
+        if($event.target.id == "back" || $event.target.id == "next"){
+            $scope.number = parseInt(document.querySelector(".active").innerText) - 1;
+            console.log("Position - "+ $scope.number)
+            if($event.target.id == "back" ){
+                if($scope.number != 0){
+                    document.querySelector(".active").classList.remove("active");
+                    document.querySelectorAll(".btn-pag")[parseInt($scope.number - 1) ].classList.add("active");
+                    $scope.actualPage -= 50;
+                    console.log("New - " +parseInt($scope.number +1))
+                }
+            } else {
+                if($scope.number != document.querySelectorAll(".btn-pag").length-1){
+                    document.querySelector(".active").classList.remove("active");
+                    document.querySelectorAll(".btn-pag")[parseInt($scope.number  + 1)].classList.add("active");
+                    $scope.actualPage += 50;
+                    console.log("New - " +parseInt($scope.number+1))
+
+                }
+            }
+
+        } else {
+            document.querySelectorAll(".btn-pag").forEach((element)=>{
+                element.classList.remove("active");
+            })
+            $event.target.className += " active";
+            $scope.actualPage = maxItems*number -50;
+        }
+
     }
 });
 

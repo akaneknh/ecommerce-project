@@ -1,75 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <!-- FONT AWSOME -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-</head>
-
-<body>
-  <!-- HEADER START -->
-  <header>
-    <h1>
-      <a href="/main.html">Liquor Stores<i class="fa-solid fa-martini-glass"></i></a>
-    </h1>
-  </header>
-  <!-- HEADER END -->
-
-  <!-- NAV START -->
-  <nav class="gnav">
-    <ul class="gnav_wrapper">
-      <li><a href="/beer.html">Beer</a></li>
-      <li><a href="/wine.html">Wine</a></li>
-      <li><a href="/sake.html">Sake</a></li>
-      <li><a href="/other.html">Other</a></li>
-      <li><a href="/main.html">Logout</a></li>
-      <li><a href="/login.html">Login</a></li>
-      <li><a href="/sign-up.html">Sign Up</a></li>
-      <li><a href="/account-info.html"><i class="fa-solid fa-user"></i></a></li>
-      <li><a href="/cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-    </ul>
-  </nav>
-  <!-- NAV END -->
-
-  <main>
-    <div class="form-wrapper">
+  <main ng-controller="Ctrl">
+    <div class="form-wrapper" ng-show="loginView">
       <h2>LogIn</h2>
       <form>
         <div class="form-item">
           <label for="email">Email</label>
-          <input type="email" name="email" required="required" placeholder="hello@example.com"></input>
+          <input type="email" ng-model="email" name="email" id="email" placeholder="hello@example.com" required />
         </div>
         <div class="form-item">
           <label for="password">Password</label>
-          <input type="password" name="password" required="required" placeholder="enter your password"></input>
+          <input type="password" ng-model="password" id="password" name="password" placeholder="enter your password" required />
+        </div>
+        <div ng-show="wrongInfo">
+          <span style="color: red;">*Incorrect email address or password</span>
         </div>
         <p class="check">
           <input type="checkbox" name="checkbox" /> Remember Me
         </p>
-        <div class="button-panel">
-          <input type="submit" class="login-btn " title="Sign In" value="Sign In"></input>
+        <div class="button-panel" ng-model="btn_login">
+          <input type="submit" class="login-btn" title="Sign In" value="Sign In" ng-click="loginBtn()">
         </div>
       </form>
-      <div class="form-footer">
-        <p><a href="/sign-up.html">Create an account</a></p>
-      </div>
     </div>
-
   </main>
-
-<!-- FOOTER -->
-  <footer>
-    <aside>
-      <a href="#">Terms of service</a>
-      <a href="#">Privacy policy</a>
-    </aside>
-    <p>&copy;Copyright 2022 Final Project</p>
-  </footer>
-  
-</body>
-
-</html>

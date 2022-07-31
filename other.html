@@ -27,12 +27,12 @@
 
     <!-- PAGER -->
     <div class="pager">
-      <ul class="pagination" >
-        <li class="pre"><a href="#"><span>«</span></a></li>
+      <ul class="pagination">
+        <li class="pre"><button id="back" ng-click="btnClick($event)"><span>«</span></button></li>
         <li ng-repeat="number in paginationNumber">
-          <button class="btn-pag " ng-click="btnClick($event, number)">{{number}}</button>
+          <button class="btn-pag " ng-click="btnClick($event, number)" ng-class="{ active: number == 1 }">{{number}}</button>
         </li>
-        <li class="next"><a href="#"><span>»</span></a></li>
+        <li class="next"><button id="next" ng-click="btnClick($event)"><span>»</span></button></li>
       </ul>
     </div>
   </main>

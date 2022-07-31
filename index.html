@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
   <script src="./assets/js/ng-route.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body ng-app="jsonApp">
@@ -26,17 +27,15 @@
   <!-- HEADER END -->
 
   <!-- NAV START -->
-  <nav class="gnav">
-
+  <nav ng-app="myApp" class="gnav">
     <ul class="gnav_wrapper">
       <li><a href="#!beer">Beer</a></li>
       <li><a href="#!wine">Wine</a></li>
       <li><a href="#!sake">Sake</a></li>
       <li><a href="#!other">Other</a></li>
-      <li><a href="#!index">Logout</a></li>
-      <li><a href="#!login">Login</a></li>
-      <li><a href="#!sign-up">Sign Up</a></li>
-      <li><a href="#!account-info"><i class="fa-solid fa-user"></i></a></li>
+      <li><a href="#!">Logout</a></li>
+      <li  ng-show="toggleIn"><a href="#!login">Sign In</a></li>
+      <li ng-show="toggleOut"><a href="#!index" ng-click="logoutBtn()">Sign Out</a></li>
       <li><a href="#!cart"><i class="fa-solid fa-cart-shopping"></i></a></li>
     </ul>
   </nav>
@@ -49,11 +48,10 @@
   <footer>
     <aside>
       <a href="#">Terms of service</a>
-      <a href="#">Privacy policy</a>
+      <a href="#!privacy">Privacy policy</a>
     </aside>
     <p>&copy;Copyright 2022 Final Project</p>
   </footer>
-
 
   <script src="./assets/js/classes/Product.js" type="text/javascript"></script>
   <script src="./assets/js/classes/User.js" type="text/javascript"></script>
@@ -64,6 +62,9 @@
   <script src="./assets/js/classes/Sake.js" type="text/javascript"></script>
   <script src="./assets/js/classes/Spirits.js" type="text/javascript"></script>
   <script src="./assets/js/classes/Wine.js" type="text/javascript"></script>
-  <script src="./assets/js/main.js" type="text/javascript"></script>
+  <script src="./assets/js/main.js" type="text/javascript" defer></script>
+  <script src="./assets/js/js_functions/sweetalert.min.js" defer></script>
+  <script src="./assets/js/js_functions/signIn.js" defer></script>
+  <script src="./assets/js/js_functions/modal.js" defer></script>
 </body>
 </html>
