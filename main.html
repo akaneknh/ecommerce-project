@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="./css/style.css">
   <!-- FONT AWSOME -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="./assets/js/classes/js_functions/modal.js" defer></script>
+
 </head>
 
 <body>
@@ -18,7 +21,7 @@
       <a href="./main.html">Liquor Stores<i class="fa-solid fa-martini-glass"></i></a>
     </h1>
   </header>
- 
+
   <!-- HEADER END -->
 
   <!-- NAV START -->
@@ -29,7 +32,7 @@
       <li><a href="/sake.html">Sake</a></li>
       <li><a href="/other.html">Other</a></li>
       <!-- <li><a href="/main.html">Logout</a></li> -->
-      <li><a href="/login.html">Login</a></li>
+      <li ng-model="loginout"><a href="./login.html">Login</a></li>
       <li><a href="/cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
     </ul>
   </nav>
@@ -162,13 +165,13 @@
 
   </main>
 
-<!-- FOOTER -->
-<footer>
-  <aside>
-    <a href="/terms.html">Terms of service</a>
-  </aside>
-  <p>&copy;Copyright 2022 Final Project</p>
-</footer>
+  <!-- FOOTER -->
+  <footer>
+    <aside>
+      <a href="/terms.html">Terms of service</a>
+    </aside>
+    <p>&copy;Copyright 2022 Final Project</p>
+  </footer>
 
 </body>
 
