@@ -47,7 +47,7 @@ myApp.run(($rootScope, $http) => {
   $rootScope.emailCookieChecker();
 
   // read and load the user.json file
-  $http.get("/ecommerce-project/assets/files/user.json").then((res) => {
+  $http.get("/assets/files/user.json").then((res) => {
     $rootScope.data = res.data;
   });
 });
@@ -112,7 +112,7 @@ myApp.controller("Ctrl", ($scope, $rootScope) => {
       if (resultLoginData) {
         $rootScope.sessionStorage(resultLoginData);
         $rootScope.getUserInfo();
-        window.location.href = "/ecommerce-project/main.html";
+        window.location.href = "/main.html";
 
         $rootScope.toggleIn = false;
         $rootScope.toggleOut = true;
