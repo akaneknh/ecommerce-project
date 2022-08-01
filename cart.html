@@ -8,8 +8,10 @@
   <link rel="stylesheet" href="./css/style.css">
   <!-- FONT AWSOME -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
   <script src="./assets/files/jquery-3.6.0.js"></script>
+  <script src="./assets/js/classes/User.js"></script>
+  <script src="./assets/js/classes/Customer.js"></script>
 </head>
 
 <body>
@@ -35,15 +37,13 @@
   </nav>
   <!-- NAV END -->
 
-  <main>
+  <main ng-app="firstapp">
     <div>
       <!-- table and button need css -->
       <span>Customer Name: <b></b></span>
       <select id="userSelectBox">
       </select>
       <button type="button">display user</button>
-  </div>
-  <div>
       <table>
           <thead>
               <tr>
@@ -55,7 +55,9 @@
               </tr>
           </thead>
           <tbody>
-
+              <tr>
+                <td>{{}}</td>
+              </tr>
           </tbody>
       </table>
   </div>
@@ -98,7 +100,6 @@
     <button class="checkout-btn" onClick="location.href='/order.html'">Checkout</button>
     </div>
   </div>
-   
   </main>
 
 <!-- FOOTER -->
@@ -111,87 +112,32 @@
 
 </body>
 <script> 
-/**
- *disp;ay user information in a table during the checkout
- * @author Matheus Rodrigues
- */
-// I used Jquery to load the user information in a table instead of using angular
-    //  $('button').click(function(){
-    //     $('.modal').show();
-    // });
-    // $('.close').click(function(){
-    //     $('.modal').hide();
-    // });
-    
-    // $.getJSON("./assets/files/user.json",function(data){
-    //     $.each(data,function(index,obj){
-    //         let tr=$('<tr></tr>');
-    //         $.each(obj,function(key,value){
-    //             let td=$('<td></td>')
-    //             td.text(value);
-    //             tr.append(td);
-    //         });
-    //         $('tbody').append(tr);
-    //  })
-    // })
-    // get the json file and display user id and frist name in the select box
-    // when it was selected should display the user infotmation in the table
-    let selectedUser = "";
-    let userlist=new Map();
-    $.getJSON('./assets/files/user.json',function(data){
-        $.each(data,function(index,userObj){
-            let option = $('<option></option>');
-            option.val(userObj.userID);
-            option.text(userObj.firstname);
-            $('#userSelectBox').append(option);
-        })
-    });
-    $('#userSelectBox').change(function(){
-        let userID = parseInt($(this).val());
-        $.getJSON('./assets/files/user.json',function(data){
-            $.each(data,function(index,userObj){
-                if(userID==userObj.userid){
-                    selectedUser = new user(userObj.userid,userObj.email,userObj.password,userObj.firstname,userObj.lastname,userObj.bornDate,userObj.country,userObj.address,userObj.phoneNumber,userObj.creditCard,userObj.expiryDate);
-                    $('b').eq(0).text(selectedUser.firstname+" "+selectedUser.lastname);
-                }
-            })
-        })
-    })
-    function user(userID,email,password,firstname,lastname,bornDate,country,address,phoneNumber,creditCard,expiryDate){
-       this.userID=userID;
-       this.email=email;
-       this.password=password;
-       this.firstname=firstname;
-       this.lastname=lastname;
-       this.bornDate=bornDate;
-       this.country=country;
-       this.address=address;
-       this.phoneNumber=phoneNumber;
-       this.creditCard=creditCard;
-       this.expiryDate=expiryDate;
+//  chkout.addEventListener('click',function(){
+//         let islogin
+//         if(){
+            
+//         }else{
+            
+//         }
+//     });
+import axios from "../cross-cutting/data-access";
+
+export default {
+    isSignedIn: async () => {
+        try {
+            const config = {
+                headers: { Authorization: localStorage.getItem("token") }
+            }
+            const response = await axios.post("./assets/js/classes/js_functions/signIn.js", config);
+
+            if (response.status === 200) {
+                return true
+            } else return false;
+
+        } catch (e) {
+            return false;
+        }
     }
-    $('button').eq(0).click(function(){
-        let seeuser = new user(selectedUser.userID,selectedUser.email,selectedUser.firstname,selectedUser.lastname,selectedUser.bornDate,selectedUser.country,selectedUser.address,selectedUser.phoneNumber,selectedUser.creditCard,selectedUser.expiryDate);
-        seeuser.set(userlist.userID,userObj);
-        $('#userSelectBox').val("");
-        populateTable();
-    });
-    function populateTable(){
-        $('tbody').children().remove();
-        userlist.forEach(function(user,userID){
-            let tr = $('<tr></tr>');
-            let td_id = $('<td>'+userID+'</td>');
-            tr.append(td_id);
-            let td_name = $('<td>'+user.firstname+'</td>');
-            tr.append(td_name);
-            let td_lastname = $('<td>'+user.lastname+'</td>');
-            tr.append(td_price);
-            let td_card = $('<td>'+user.creditCard+'</td>');
-            tr.append(td_card);
-            let td_expirydate = $('<td>'+user.expiryDate+'</td>');
-            $('tbody').append(tr);
-        })
-    }
-    
+}
 </script>
 </html>
