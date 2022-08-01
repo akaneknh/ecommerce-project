@@ -3,6 +3,8 @@ const wines = new Map();
 const beers = new Map();
 const spirits = new Map();
 const sakes = new Map();
+var ShopingCart = new ShoppingCart();
+console.log(ShopingCart.getTotalItems())
 const totalProducts = new Map();
 const maxItems = 50;
 var paginationNumber = 0;
@@ -36,6 +38,9 @@ jsonApp.config(function ($routeProvider){
         .when("/order",{
             templateUrl:"./order.html"
         })
+        .when("/order-complete",{
+                templateUrl:"./order-complete.html"
+        })
         .when("/cart",{
             templateUrl:"./cart.html"
         })
@@ -46,6 +51,7 @@ jsonApp.config(function ($routeProvider){
 
 //Get the elements from the JSON file
 jsonApp.run(($http, $rootScope)=>{
+    $rootScope.cartItems = 0;
     $http.get("./assets/files/products.json").then(
         (products)=>{
             $rootScope.id;
@@ -77,6 +83,8 @@ jsonApp.run(($http, $rootScope)=>{
                 sakes.set(sake.id, new Sake(sake.id, sake.name, sake.price, sake.brand, sake.img, sake.description, sake.size, sake.stock, sake.category))
             });
 
+
+
         },
         (error)=>{
             console.log(error.statusText)
@@ -84,56 +92,64 @@ jsonApp.run(($http, $rootScope)=>{
         }
     );
 
-});
-
+})
 
 jsonApp.controller('allProducts',($scope,$rootScope, $location)=>{
-    $scope.productsArray = [];
-    $scope.paginationNumber = [];
-    //Change Map to array for can display the information on the page.
-    $scope.productsArray = updateArray(totalProducts);
-    if((sakes.size/maxItems)% 1 !== 0){
-        paginationNumber =  parseInt((totalProducts.size/maxItems)+1) ;
-    } else {
-        paginationNumber = parseInt((totalProducts.size/maxItems));
-    }
-    //put inside the array the total pages for render in HTML
-    for(var i =1; i<= paginationNumber; i++){
-        $scope.paginationNumber.push(i);
-    }
-    $scope.pageSize = 5;
-    $scope.actualPage = 0;
-    $scope.elementsPerPage = maxItems;
-
-    //Pagination element
-    $scope.btnClick = ($event, number) =>{
-        if($event.target.id == "back" || $event.target.id == "next"){
-            $scope.number = parseInt(document.querySelector(".active").innerText) - 1;
-           if($event.target.id == "back" ){
-               if($scope.number != 0){
-                   document.querySelector(".active").classList.remove("active");
-                   document.querySelectorAll(".btn-pag")[parseInt($scope.number - 1) ].classList.add("active");
-                   $scope.actualPage -= 50;
-               }
-           } else {
-               if($scope.number != document.querySelectorAll(".btn-pag").length-1){
-                   document.querySelector(".active").classList.remove("active");
-                   document.querySelectorAll(".btn-pag")[parseInt($scope.number  + 1)].classList.add("active");
-                   $scope.actualPage += 50;
-               }
-           }
-
+        $scope.productsArray = [];
+        $scope.paginationNumber = [];
+        //Change Map to array for can display the information on the page.
+        console.log(totalProducts)
+        $scope.productsArray = updateArray(totalProducts);
+        console.log($scope.productsArray)
+        if((sakes.size/maxItems)% 1 !== 0){
+            paginationNumber =  parseInt((totalProducts.size/maxItems)+1) ;
         } else {
-            document.querySelectorAll(".btn-pag").forEach((element)=>{
-                element.classList.remove("active");
-            })
-            $event.target.className += " active";
-            $scope.actualPage = maxItems*number -50;
+            paginationNumber = parseInt((totalProducts.size/maxItems));
         }
+        //put inside the array the total pages for render in HTML
+        for(var i =1; i<= paginationNumber; i++){
+            $scope.paginationNumber.push(i);
+        }
+        $scope.pageSize = 5;
+        $scope.actualPage = 0;
+        $scope.elementsPerPage = maxItems;
 
-    }
+        //Pagination element
+        $scope.btnClick = ($event, number) =>{
+            if($event.target.id == "back" || $event.target.id == "next"){
+                $scope.number = parseInt(document.querySelector(".active").innerText) - 1;
+                if($event.target.id == "back" ){
+                    if($scope.number != 0){
+                        document.querySelector(".active").classList.remove("active");
+                        document.querySelectorAll(".btn-pag")[parseInt($scope.number - 1) ].classList.add("active");
+                        $scope.actualPage -= 50;
+                    }
+                } else {
+                    if($scope.number != document.querySelectorAll(".btn-pag").length-1){
+                        document.querySelector(".active").classList.remove("active");
+                        document.querySelectorAll(".btn-pag")[parseInt($scope.number  + 1)].classList.add("active");
+                        $scope.actualPage += 50;
+                    }
+                }
 
+            } else {
+                document.querySelectorAll(".btn-pag").forEach((element)=>{
+                    element.classList.remove("active");
+                })
+                $event.target.className += " active";
+                $scope.actualPage = maxItems*number -50;
+            }
+
+        }
+ });
+
+//This controller is for show the ShoppingCart to the
+jsonApp.controller('cartCtrl',($scope,$rootScope, $location)=>{
+    $scope.shopingCart = ShopingCart;
+    $scope.products = updateArray(ShopingCart.products)
+    console.log($scope.products);
 });
+
 
 jsonApp.controller('wines',($scope,$rootScope, $location)=>{
     $scope.productsArray = [];
@@ -356,6 +372,12 @@ jsonApp.controller('itemCtrl',($scope,$rootScope, $location)=>{
                  break;
         }
     }
+
+    $scope.btnAddProduct = (product, quantity)=>{
+        console.log(quantity)
+        ShopingCart.addProducts(product, quantity);
+    }
+
 });
 
 

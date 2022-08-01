@@ -4,18 +4,15 @@
  * @version 1.0
  */
 class ShoppingCart{
-    shoppingCartID;
     User;
     products = new Map();
 
     /**
      *
-     * @param shoppingCartID {number}
      * @param User {User} User object
      * @param products {Map}
      */
-    constructor(shoppingCartID, User, products = "") {
-        this.shoppingCartID = shoppingCartID;
+    constructor(User, products = "") {
         this.User = User;
         if(products !== ""){
             this.products = products;
@@ -99,6 +96,14 @@ class ShoppingCart{
             }
         }
         return totalPrice.toFixed(2);
+    }
+
+    /**
+     * This method get the total products of the Shopping Cart
+     * @return {number}
+     */
+    getTotalItems(){
+         return this.products.size;
     }
 
     saveInLocalStorage(){

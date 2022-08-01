@@ -1,10 +1,10 @@
 //let myApp = angular.module("myApp", []);
+
 // when load the signIn page first,
-jsonApp.run(($rootScope, $http) => {
+jsonApp.run(($rootScope, $http, $location) => {
   $rootScope.loginView = true;
   $rootScope.toggleIn = true;
   $rootScope.toggleOut = false;
-  console.log( $rootScope.toggleIn)
 
   // get the cookie to 'remember me' function
   $rootScope.getCookie = (CookieName) => {
@@ -36,8 +36,8 @@ jsonApp.run(($rootScope, $http) => {
   // (for remember me)
   $rootScope.emailCookieChecker = () => {
     let email = $rootScope.getCookie("email");
-    // console.log('cookie value : ' + email);
-    if (email !== "") {
+     //console.log('cookie value : ' + email);
+    if (email != "") {
       $rootScope.email = email;
 
       let checkBox = document.getElementsByTagName("input")[2];
@@ -45,10 +45,10 @@ jsonApp.run(($rootScope, $http) => {
     }
   };
 
-  $rootScope.emailCookieChecker();
+
 
   // read and load the user.json file
-  $http.get("/ecommerce-project/assets/files/user.json").then((res) => {
+  $http.get("./assets/files/user.json").then((res) => {
     $rootScope.data = res.data;
   });
 });
@@ -56,6 +56,8 @@ jsonApp.run(($rootScope, $http) => {
 jsonApp.controller("Ctrl", ($scope, $rootScope) => {
   let emailInput = document.getElementsByTagName("input")[0];
   let checkBox = document.getElementsByTagName("input")[2];
+  $rootScope.emailCookieChecker();
+
 
   // Function for compare and check if input value is matched with json file
   $rootScope.signInChecker = (data, email, password) => {
@@ -71,30 +73,28 @@ jsonApp.controller("Ctrl", ($scope, $rootScope) => {
   // function for storing userInfo in class and session
   $rootScope.sessionStorage = (loginData) => {
     const newUser = new Customer(
-      loginData.userID,
-      loginData.firstName,
-      loginData.lastName,
-      loginData.bornDate,
-      loginData.country,
-      loginData.address,
-      loginData.email,
-      loginData.phoneNumber,
-      loginData.creditCard,
-      loginData.expiryDate
+        loginData.userID,
+        loginData.firstName,
+        loginData.lastName,
+        loginData.bornDate,
+        loginData.country,
+        loginData.address,
+        loginData.email,
+        loginData.phoneNumber,
+        loginData.creditCard,
+        loginData.expiryDate
     );
-    newUser.userAge = newUser.getAge();
-    newUser.adult = newUser.isOlder();
     // console.log(newUser);
     sessionStorage.setItem("userInfo", JSON.stringify(newUser));
 
     // alert message after user sign in if they are under 19
-    if (!newUser.adult) {
+   /* if (!newUser.isOlder()) {
       swal(
-        "You are under 19 years old",
-        "You can look around the mall, but remember can't check out anything!",
-        "warning"
+          "You are under 19 years old",
+          "You can look around the mall, but remember can't check out anything!",
+          "warning"
       );
-    }
+    }*/
   };
 
   // When you click the SignIn Btn, function's gonna do
@@ -104,16 +104,16 @@ jsonApp.controller("Ctrl", ($scope, $rootScope) => {
     if ($scope.email !== "" && $scope.password !== "") {
       // console.log($scope.email);
       let resultLoginData = $rootScope.signInChecker(
-        $rootScope.data,
-        $scope.email,
-        $scope.password
+          $rootScope.data,
+          $scope.email,
+          $scope.password
       );
 
       // Store the userInfo in session if matched
       if (resultLoginData) {
         $rootScope.sessionStorage(resultLoginData);
         $rootScope.getUserInfo();
-        window.location.href = "/ecommerce-project/main.html";
+        window.location.href = "#!";
 
         $rootScope.toggleIn = false;
         $rootScope.toggleOut = true;
@@ -141,9 +141,8 @@ jsonApp.controller("Ctrl", ($scope, $rootScope) => {
     $rootScope.loginView = true;
     $rootScope.toggleIn = true;
     $rootScope.toggleOut = false;
-    $scope.email = "";
+    $rootScope.email = "";
     $scope.password = "";
-    $scope.emailCookieChecker();
   };
 
   // display userInfo on checkout page
@@ -160,3 +159,25 @@ jsonApp.controller("Ctrl", ($scope, $rootScope) => {
   };
 });
 
+
+//MATT PART
+jsonApp.controller("orderCtrl", ($scope, $rootScope)=>{
+  $rootScope.getUserInfo = () => {
+    console.log("before userInfo")
+    var userInfo = sessionStorage.getItem("userInfo")
+    console.log("After userInfo")
+
+    if (userInfo) {
+      console.log("inside userInfo")
+
+      const user = JSON.parse(userInfo);
+      $rootScope.fullName = user.firstName + " " + user.lastName;
+      $rootScope.address = user.address;
+      $rootScope.creditCard = user.creditCard;
+      console.log($rootScope.creditCard)
+      $rootScope.expiryDate = user.expiryDate;
+      console.log($rootScope.expiryDate)
+
+    }
+  };
+})

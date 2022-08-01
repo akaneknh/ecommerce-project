@@ -1,12 +1,13 @@
- <main>
+ <main ng-controller="cartCtrl">
     <h2>Your cart</h2>
     <div class="cart-wrap">
-    <div class="cart-summary">
+    <div class="cart-summary" ng-repeat="product in products">
         <div class="cart-item-detail-pic"></div>
-          <h3>Boujee Sparkling Rose</h3>
-          <span>300ML</span>
-          <span class="cart-item-price">$6.35</span>
+          <h3>{{product.product.productName}}</h3>
+          <span>{{product.product.productSize}}</span>
+          <span class="cart-item-price">${{product.product.productSize}}</span>
           <div class="quantity">
+              <span>{{product.product.productSize}}</span>
             <select>
               <option value="0">Quantity</option>
               <option value="1">1</option>
@@ -17,25 +18,10 @@
             </select>
           </div>    
     </div>
-    <div class="cart-summary">
-        <div class="cart-item-detail-pic"></div>
-          <h3>Blasted Church Vineyards Big Bang Theorye</h3>
-          <span>300ML</span>
-          <span class="cart-item-price">$6.35</span>
-          <div class="quantity">
-            <select>
-              <option value="0">Quantity</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </div>    
-    </div>
+
     <div class="total">
-    <h3>Total: <span>$6.35</span></h3>
-    <button class="checkout-btn" onClick="location.href='/order.html'">Checkout</button>
+    <h3>Total: <span>${{shopingCart.getTotalPrice()}}</span></h3>
+    <a class="checkout-btn" href="#!order">Checkout</a>
     </div>
   </div>
   </main>

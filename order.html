@@ -1,4 +1,4 @@
-<main ng-controller="Ctrl">
+<main ng-controller="orderCtrl">
   <div class="confirm-order-wrap">
     <div class="checkout-summary">
       <div class="user-infomation">
@@ -45,8 +45,8 @@
         <p>Shipping:</p>
         <h3>Total: <span>$26.35</span></h3>
       </div>
-      <button class="confirm-btn" onClick="location.href='/order-complete.html'">Checkout</button>
+      <button class="confirm-btn" onClick="location.href='#!order-complete'">Checkout</button>
     </div>
   </div>
-  <a class="back" href="/cart.html"><span>« Back to Cart</span></a>
+  <a class="back" href="#!cart"><span>« Back to Cart</span></a>
 </main>

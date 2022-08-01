@@ -1,7 +1,7 @@
 /**
  * Customer class
- * @author Jose Luis CG
- * @version 1.0
+ * @author Jose Luis CG and April
+ * @version 1.1
  */
 class Customer extends User {
     /**
@@ -13,9 +13,11 @@ class Customer extends User {
      * @param address {String} User Address Ej: 500 Pacific Street, Vancouver, BC, V67 683
      * @param email {String} User email
      * @param phoneNumber {String} User phone number
+     * @param creditCard {String} User credit Card
+     * @param expiryDate {String} User credit Card expiry date
      */
-    constructor(userID, firstName, lastName, bornDate, country, address, email, phoneNumber) {
-        super(userID, firstName, lastName, bornDate, country, address, email, phoneNumber);
+    constructor(userID, firstName, lastName, bornDate, country, address, email, phoneNumber, creditCard, expiryDate) {
+        super(userID, firstName, lastName, bornDate, country, address, email, phoneNumber, creditCard, expiryDate);
     }
 
     //METHODS
@@ -27,10 +29,10 @@ class Customer extends User {
         let today = new Date();
         let age = 0;
         let month = 0;
-        age = today.getFullYear() - this.bornDate.getFullYear();
-        month = today.getMonth() - this.bornDate.getMonth();
+        age = today.getFullYear() - this.bornDate.split('/')[2];
+        month = today.getMonth() - this.bornDate.split('/')[0];
 
-        if (month < 0 || (month === 0 && today.getDate() < this.bornDate.getDate())) {
+        if (month < 0 || (month === 0 && today.getDate() < this.bornDate.split('/')[1])) {
             age--;
         }
         return age;
@@ -41,6 +43,6 @@ class Customer extends User {
      * @return {boolean}
      */
     isOlder() {
-        return this.getAge() >= 18;
+        return this.getAge() >= 19;
     }
 }

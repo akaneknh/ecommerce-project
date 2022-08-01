@@ -667,3 +667,24 @@ aside p {
 }
 
 /* USER OMFOMATION END */
+
+/* NAV  START*/
+.navCart {
+  position: relative;
+}
+
+.navCart i{
+  font-size: 25px;
+}
+
+.navCartNum {
+  position: absolute;
+  right: 35%;
+  top: 42%;
+  width: 17px;
+  height: 17px;
+  font-size: 11px;
+  border-radius: 9px;
+  background: #ae6e62;
+  color: #fff;
+}

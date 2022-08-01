@@ -7,16 +7,15 @@
         <p>{{product.productDescription}}</p>
         <div class="quantity-buttun">
           <div class="quantity">
-            <select>
-              <option value="0">Quantity</option>
-              <option value="1">1</option>
+            <select ng-model="selectQuantity">
+              <option value="1" selected>1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
               <option value="5">5</option>
             </select>
           </div>
-          <button class="add-cart-btn" onClick="location.href=''">Add to Cart</button>
+          <button class="add-cart-btn" ng-click="btnAddProduct(product, selectQuantity)">Add to Cart</button>
         </div>
       </aside>
     </div>

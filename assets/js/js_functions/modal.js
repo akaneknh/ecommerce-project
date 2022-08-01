@@ -33,19 +33,19 @@ if (getMainCookie("isAdult") === "") {
       },
     },
   })
-    .then((value) => {
-      switch (value) {
+      .then((value) => {
+        switch (value) {
 
-        case "catch":
-          setMainCookie("isAdult", 'Y', 4);
-          swal("Enjoy Shopping!", "", "success");
-          break;
+          case "catch":
+            setMainCookie("isAdult", 'Y', 4);
+            swal("Enjoy Shopping!", "", "success");
+            break;
 
-        default:
-          setMainCookie("isAdult", 'N', 4);
-          window.location.href = "https://google.com";
-          break;
-      }
-    });
+          default:
+            setMainCookie("isAdult", 'N', 4);
+            swal("Sorry!", "The sale of alcoholic beverages to persons under 19 years of age is prohibited.", "warning");
+            break;
+        }
+      });
 }
 
