@@ -146,6 +146,7 @@ myApp.controller("Ctrl", ($scope, $rootScope) => {
   };
 
   // display userInfo on checkout page
+  //matt part
   $rootScope.getUserInfo = () => {
     const userInfo = sessionStorage.getItem("userInfo");
     if (userInfo) {

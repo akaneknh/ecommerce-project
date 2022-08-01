@@ -100,19 +100,4 @@
     <p>&copy;Copyright 2022 Final Project</p>
   </footer>
 </body>
-<script>
-  myApp.controller("Ctrl", ($scope, $rootScope)=>{
-    $rootScope.getUserInfo = () => {
-    const userInfo = sessionStorage.getItem("userInfo");
-    if (userInfo) {
-      const user = JSON.parse(userInfo);
-      $rootScope.fullName = user.firstName + " " + user.lastName;
-      $rootScope.address = user.address;
-      $rootScope.creditCard = user.creditCard;
-      $rootScope.expiryDate = user.expiryDate;
-    }
-  };
-  
-  })
-</script>
 </html>
