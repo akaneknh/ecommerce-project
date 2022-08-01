@@ -2,12 +2,12 @@
     <h2>Your cart</h2>
     <div class="cart-wrap">
     <div class="cart-summary" ng-repeat="product in products">
-        <div class="cart-item-detail-pic"></div>
-          <h3>{{product.product.productName}}</h3>
-          <span>{{product.product.productSize}}</span>
-          <span class="cart-item-price">${{product.product.productSize}}</span>
+        <div class="cart-item-detail-pic" style="background-image: url('{{product.id.productImage}}');"></div>
+        <h3>{{product.id.productName}}</h3>
+          <span>{{product.id.productSize}}</span>
+          <span class="cart-item-price">${{product.id.productPrice}}</span>
           <div class="quantity">
-              <span>{{product.product.productSize}}</span>
+              <span>{{product.product}}</span>
             <select>
               <option value="0">Quantity</option>
               <option value="1">1</option>

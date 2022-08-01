@@ -16,8 +16,8 @@
           </tr>
           <tr>
             <td>Payment</td>
-            <td>{{creditCard}}</td>
-            <td>{{expiryDate}}</td>
+            <td>{{credit}}</td>
+            <td>{{expi}}</td>
           </tr>
         </table>
       </div>
@@ -41,8 +41,8 @@
     <div class="confirm-order">
       <div>
         <p>Sub total:</p>
-        <p>Tax:</p>
-        <p>Shipping:</p>
+        <p>Tax: {{tax}}%</p>
+        <p>Shipping: ${{shipping}}</p>
         <h3>Total: <span>$26.35</span></h3>
       </div>
       <button class="confirm-btn" onClick="location.href='#!order-complete'">Checkout</button>

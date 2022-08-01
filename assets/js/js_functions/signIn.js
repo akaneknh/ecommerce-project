@@ -162,22 +162,23 @@ jsonApp.controller("Ctrl", ($scope, $rootScope) => {
 
 //MATT PART
 jsonApp.controller("orderCtrl", ($scope, $rootScope)=>{
+
+  console.log("I am here!")
   $rootScope.getUserInfo = () => {
     console.log("before userInfo")
     var userInfo = sessionStorage.getItem("userInfo")
     console.log("After userInfo")
 
     if (userInfo) {
-      console.log("inside userInfo")
-
       const user = JSON.parse(userInfo);
       $rootScope.fullName = user.firstName + " " + user.lastName;
       $rootScope.address = user.address;
-      $rootScope.creditCard = user.creditCard;
-      console.log($rootScope.creditCard)
-      $rootScope.expiryDate = user.expiryDate;
-      console.log($rootScope.expiryDate)
-
+      $rootScope.credit = user.creditCard;
+      $rootScope.expi = user.expiryDate;
+      $scope.tax = tax;
+      $scope.shipping = shipping;
     }
   };
+  $rootScope.getUserInfo();
+
 })

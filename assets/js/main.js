@@ -8,7 +8,8 @@ console.log(ShopingCart.getTotalItems())
 const totalProducts = new Map();
 const maxItems = 50;
 var paginationNumber = 0;
-
+const tax = 10;
+const shipping = 5;
 
 
 //NG ROUTES
@@ -376,6 +377,7 @@ jsonApp.controller('itemCtrl',($scope,$rootScope, $location)=>{
     $scope.btnAddProduct = (product, quantity)=>{
         console.log(quantity)
         ShopingCart.addProducts(product, quantity);
+        $rootScope.cartItems = ShopingCart.getTotalItems();
     }
 
 });

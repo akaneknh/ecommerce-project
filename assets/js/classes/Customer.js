@@ -4,6 +4,8 @@
  * @version 1.1
  */
 class Customer extends User {
+    creditCard;
+    expiryDate;
     /**
      * @param userID {number} User ID
      * @param firstName {String} User First Name
@@ -17,7 +19,9 @@ class Customer extends User {
      * @param expiryDate {String} User credit Card expiry date
      */
     constructor(userID, firstName, lastName, bornDate, country, address, email, phoneNumber, creditCard, expiryDate) {
-        super(userID, firstName, lastName, bornDate, country, address, email, phoneNumber, creditCard, expiryDate);
+        super(userID, firstName, lastName, bornDate, country, address, email, phoneNumber);
+        this.creditCard = creditCard;
+        this.expiryDate = expiryDate;
     }
 
     //METHODS
