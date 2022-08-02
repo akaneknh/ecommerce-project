@@ -22,8 +22,6 @@ document.getElementById("test").addEventListener('click', event => {
             "warning"
         );
     }
-
-
 });
 
 //NG ROUTES
@@ -98,7 +96,7 @@ jsonApp.run(($http, $rootScope)=>{
                 sakes.set(sake.id, new Sake(sake.id, sake.name, sake.price, sake.brand, sake.img, sake.description, sake.size, sake.stock, sake.category))
             });
 
-
+             window.location.href = "#!";
 
         },
         (error)=>{
@@ -106,8 +104,7 @@ jsonApp.run(($http, $rootScope)=>{
             alert("An error ocurred to get information from JSON. Error: "+ error.status+" "+error.statusText)
         }
     );
-
-})
+});
 
 jsonApp.controller('allProducts',($scope,$rootScope, $location)=>{
         $scope.productsArray = [];
@@ -166,6 +163,10 @@ jsonApp.controller('cartCtrl',($scope,$rootScope, $location)=>{
     $scope.shopingCart = ShopingCart;
     $scope.products = updateArray(ShopingCart.products)
     console.log($scope.products);
+
+    $scope.btnCheckout = function(ev) {
+        console.log(ev)
+    }
 });
 
 
