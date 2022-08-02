@@ -14,7 +14,7 @@
     <h2>Our Product</h2>
     <div class="items-wrap">
       <div class="item" ng-repeat="sake in productsArray | filter:nameSearch | limitTo :elementsPerPage:actualPage">
-        <img src="{{sake.product.productImage}}" alt="{{sake.product.productImage}} picture">
+        <div class="item-pic" style="background-image: url('{{sake.product.productImage}}');"></div>
         <a href="#!item?productID={{sake.product.productID}}&category={{sake.category}}"></a>
         <aside>
           <h3>{{sake.product.productName}}</h3>

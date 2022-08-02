@@ -15,7 +15,7 @@
     <h2>Our Product</h2>
     <div class="items-wrap">
       <div class="item" ng-repeat="product in productsArray | filter:nameSearch | limitTo :elementsPerPage:actualPage">
-        <img src="{{product.product.productImage}}" alt="{{product.product.productImage}} picture">
+        <div class="item-pic" style="background-image: url('{{product.product.productImage}}');"></div>
         <a href="#!item?productID={{product.product.productID}}&category={{product.category}}"></a>
         <aside>
           <h3>{{product.product.productName}}</h3>

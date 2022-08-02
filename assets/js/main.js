@@ -6,7 +6,7 @@ const sakes = new Map();
 var ShopingCart = new ShoppingCart();
 console.log(ShopingCart.getTotalItems())
 const totalProducts = new Map();
-const maxItems = 50;
+const maxItems = 16;
 var paginationNumber = 0;
 const tax = 10;
 const shipping = 5;
@@ -123,13 +123,13 @@ jsonApp.controller('allProducts',($scope,$rootScope, $location)=>{
                     if($scope.number != 0){
                         document.querySelector(".active").classList.remove("active");
                         document.querySelectorAll(".btn-pag")[parseInt($scope.number - 1) ].classList.add("active");
-                        $scope.actualPage -= 50;
+                        $scope.actualPage -= 16;
                     }
                 } else {
                     if($scope.number != document.querySelectorAll(".btn-pag").length-1){
                         document.querySelector(".active").classList.remove("active");
                         document.querySelectorAll(".btn-pag")[parseInt($scope.number  + 1)].classList.add("active");
-                        $scope.actualPage += 50;
+                        $scope.actualPage += 16;
                     }
                 }
 
@@ -138,7 +138,7 @@ jsonApp.controller('allProducts',($scope,$rootScope, $location)=>{
                     element.classList.remove("active");
                 })
                 $event.target.className += " active";
-                $scope.actualPage = maxItems*number -50;
+                $scope.actualPage = maxItems*number -16;
             }
 
         }
@@ -178,13 +178,13 @@ jsonApp.controller('wines',($scope,$rootScope, $location)=>{
                 if($scope.number != 0){
                     document.querySelector(".active").classList.remove("active");
                     document.querySelectorAll(".btn-pag")[parseInt($scope.number - 1) ].classList.add("active");
-                    $scope.actualPage -= 50;
+                    $scope.actualPage -= 16;
                 }
             } else {
                 if($scope.number != document.querySelectorAll(".btn-pag").length-1){
                     document.querySelector(".active").classList.remove("active");
                     document.querySelectorAll(".btn-pag")[parseInt($scope.number  + 1)].classList.add("active");
-                    $scope.actualPage += 50;
+                    $scope.actualPage += 16;
                 }
             }
 
@@ -193,7 +193,7 @@ jsonApp.controller('wines',($scope,$rootScope, $location)=>{
                 element.classList.remove("active");
             })
             $event.target.className += " active";
-            $scope.actualPage = maxItems*number -50;
+            $scope.actualPage = maxItems*number -16;
         }
 
     }
@@ -226,13 +226,13 @@ jsonApp.controller('sakes',($scope,$rootScope, $location)=>{
                 if($scope.number != 0){
                     document.querySelector(".active").classList.remove("active");
                     document.querySelectorAll(".btn-pag")[parseInt($scope.number - 1) ].classList.add("active");
-                    $scope.actualPage -= 50;
+                    $scope.actualPage -= 16;
                 }
             } else {
                 if($scope.number != document.querySelectorAll(".btn-pag").length-1){
                     document.querySelector(".active").classList.remove("active");
                     document.querySelectorAll(".btn-pag")[parseInt($scope.number  + 1)].classList.add("active");
-                    $scope.actualPage += 50;
+                    $scope.actualPage += 16;
                 }
             }
 
@@ -241,7 +241,7 @@ jsonApp.controller('sakes',($scope,$rootScope, $location)=>{
                 element.classList.remove("active");
             })
             $event.target.className += " active";
-            $scope.actualPage = maxItems*number -50;
+            $scope.actualPage = maxItems*number -16;
         }
 
     }
@@ -274,14 +274,14 @@ jsonApp.controller('spirits',($scope,$rootScope, $location)=>{
                 if($scope.number != 0){
                     document.querySelector(".active").classList.remove("active");
                     document.querySelectorAll(".btn-pag")[parseInt($scope.number - 1) ].classList.add("active");
-                    $scope.actualPage -= 50;
+                    $scope.actualPage -= 16;
                     console.log("New - " +parseInt($scope.number +1))
                 }
             } else {
                 if($scope.number != document.querySelectorAll(".btn-pag").length-1){
                     document.querySelector(".active").classList.remove("active");
                     document.querySelectorAll(".btn-pag")[parseInt($scope.number  + 1)].classList.add("active");
-                    $scope.actualPage += 50;
+                    $scope.actualPage += 16;
                     console.log("New - " +parseInt($scope.number+1))
 
                 }
@@ -292,7 +292,7 @@ jsonApp.controller('spirits',($scope,$rootScope, $location)=>{
                 element.classList.remove("active");
             })
             $event.target.className += " active";
-            $scope.actualPage = maxItems*number -50;
+            $scope.actualPage = maxItems*number -16;
         }
 
     }
@@ -326,14 +326,14 @@ jsonApp.controller('beers',($scope,$rootScope, $location)=>{
                 if($scope.number != 0){
                     document.querySelector(".active").classList.remove("active");
                     document.querySelectorAll(".btn-pag")[parseInt($scope.number - 1) ].classList.add("active");
-                    $scope.actualPage -= 50;
+                    $scope.actualPage -= 16;
                     console.log("New - " +parseInt($scope.number +1))
                 }
             } else {
                 if($scope.number != document.querySelectorAll(".btn-pag").length-1){
                     document.querySelector(".active").classList.remove("active");
                     document.querySelectorAll(".btn-pag")[parseInt($scope.number  + 1)].classList.add("active");
-                    $scope.actualPage += 50;
+                    $scope.actualPage += 16;
                     console.log("New - " +parseInt($scope.number+1))
 
                 }
@@ -344,7 +344,7 @@ jsonApp.controller('beers',($scope,$rootScope, $location)=>{
                 element.classList.remove("active");
             })
             $event.target.className += " active";
-            $scope.actualPage = maxItems*number -50;
+            $scope.actualPage = maxItems*number -16;
         }
 
     }
@@ -378,6 +378,7 @@ jsonApp.controller('itemCtrl',($scope,$rootScope, $location)=>{
         console.log(quantity)
         ShopingCart.addProducts(product, quantity);
         $rootScope.cartItems = ShopingCart.getTotalItems();
+        localStorage.setItem("shoppingCart", JSON.stringify(ShopingCart));
     }
 
 });
