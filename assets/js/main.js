@@ -11,6 +11,20 @@ var paginationNumber = 0;
 const tax = 10;
 const shipping = 5;
 
+document.getElementById("test").addEventListener('click', event => {
+    event.preventDefault();
+    if(ShopingCart.getTotalItems() !== 0){
+        window.location.href = "#!cart"
+    } else {
+        swal(
+            "Your Shopping Cart is empty",
+            "",
+            "warning"
+        );
+    }
+
+
+});
 
 //NG ROUTES
 jsonApp.config(function ($routeProvider){
@@ -146,6 +160,9 @@ jsonApp.controller('allProducts',($scope,$rootScope, $location)=>{
 
 //This controller is for show the ShoppingCart to the
 jsonApp.controller('cartCtrl',($scope,$rootScope, $location)=>{
+    if(ShopingCart.getTotalItems() === 0){
+        window.location.href = "#!";
+    }
     $scope.shopingCart = ShopingCart;
     $scope.products = updateArray(ShopingCart.products)
     console.log($scope.products);
