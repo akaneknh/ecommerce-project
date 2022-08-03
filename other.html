@@ -29,8 +29,8 @@
     <div class="pager">
       <ul class="pagination">
         <li class="pre"><button id="back" ng-click="btnClick($event)"><span>«</span></button></li>
-        <li ng-repeat="number in paginationNumber">
-          <button class="btn-pag " ng-click="btnClick($event, number)" ng-class="{ active: number == 1 }">{{number}}</button>
+        <li ng-repeat="number in paginationNumber | limitTo:10:pagItem">
+          <button class="btn-pag" data-position="{{$index}}" ng-click="btnClick($event, number)" ng-class="{ active: number == 1 }">{{number}}</button>
         </li>
         <li class="next"><button id="next" ng-click="btnClick($event)"><span>»</span></button></li>
       </ul>

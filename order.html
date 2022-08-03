@@ -23,29 +23,22 @@
       </div>
 
       <h2>Your Order</h2>
-      <div class="checkout-item">
-        <div class="order-item-detail-pic"></div>
-        <h3>Boujee Sparkling Rose</h3>
-        <span>300ML</span>
-        <span class="cart-item-price">$6.35</span>
-        <span>Qty: 1</span>
-      </div>
-      <div class="checkout-item">
-        <div class="order-item-detail-pic"></div>
-        <h3>Boujee Sparkling Rose</h3>
-        <span>300ML</span>
-        <span class="cart-item-price">$6.35</span>
-        <span>QTY: 1</span>
+      <div class="checkout-item" ng-repeat="product in products">
+        <div class="order-item-detail-pic" style="background-image: url('{{product.id.productImage}}');"></div>
+        <h3>{{product.id.productName}}</h3>
+        <span>{{product.id.productSize}}</span>
+        <span class="cart-item-price">${{product.id.productPrice}}</span>
+        <span>Qty: {{product.product}}</span>
       </div>
     </div>
     <div class="confirm-order">
       <div>
-        <p>Sub total:</p>
+        <p>Sub total: {{shopingCart.getTotalPrice()}}</p>
         <p>Tax: {{tax}}%</p>
         <p>Shipping: ${{shipping}}</p>
-        <h3>Total: <span>$26.35</span></h3>
+        <h3>Total: <span>${{realPrice}}</span></h3>
       </div>
-      <button class="confirm-btn" onClick="location.href='#!order-complete'">Checkout</button>
+      <button class="confirm-btn" ng-click="btnOrderComplete()">Checkout</button>
     </div>
   </div>
   <a class="back" href="#!cart"><span>« Back to Cart</span></a>

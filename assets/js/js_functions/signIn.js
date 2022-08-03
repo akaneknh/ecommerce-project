@@ -138,6 +138,7 @@ jsonApp.controller("Ctrl", ($scope, $rootScope) => {
   // When you click the logoutBtn,
   $rootScope.logoutBtn = () => {
     sessionStorage.removeItem("userInfo");
+    $rootScope.customerLog = null;
     $rootScope.loginView = true;
     $rootScope.toggleIn = true;
     $rootScope.toggleOut = false;
@@ -162,13 +163,12 @@ jsonApp.controller("Ctrl", ($scope, $rootScope) => {
 
 //MATT PART
 jsonApp.controller("orderCtrl", ($scope, $rootScope)=>{
-
-  console.log("I am here!")
   $rootScope.getUserInfo = () => {
-    console.log("before userInfo")
-    var userInfo = sessionStorage.getItem("userInfo")
-    console.log("After userInfo")
 
+    var userInfo = sessionStorage.getItem("userInfo")
+    $scope.shopingCart = ShopingCart;
+    $scope.products = updateArray(ShopingCart.products)
+    $scope.realPrice = (parseFloat(ShopingCart.getTotalPrice()) + parseFloat(ShopingCart.getTotalPrice() * (tax/100)) + parseFloat(shipping)).toFixed(2);
     if (userInfo) {
       const user = JSON.parse(userInfo);
       $rootScope.fullName = user.firstName + " " + user.lastName;
@@ -180,5 +180,11 @@ jsonApp.controller("orderCtrl", ($scope, $rootScope)=>{
     }
   };
   $rootScope.getUserInfo();
+
+  $scope.btnOrderComplete = () =>{
+    ShopingCart = null;
+    $rootScope.cartItems = 0;
+    window.location.href='#!order-complete';
+  }
 
 })
