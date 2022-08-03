@@ -166,6 +166,22 @@ footer aside {
   color: #fff;
 }
 
+.hero-terms {
+  width: 100%;
+  height: 300px;
+  background-image: url(../img/terms.png);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-terms h2 {
+  color: #fff;
+}
+
 /* HERO END */
 
 /* SERACH BAR START */
@@ -690,3 +706,30 @@ aside p {
   background: #ae6e62;
   color: #fff;
 }
+/* NAV CART END */
+
+/* * PRIVACY POLICY START */ 
+.terms {
+  margin: 0 10%;
+}
+
+.terms section {
+  width: 100%;
+  padding: 10px 0;
+}
+.terms div {
+  line-height:28px;
+  width: 100%;
+  padding: 10px 0;
+}
+.terms  p {
+  text-align: left;
+}
+.terms  ul {
+  text-align: left;
+}
+.terms  li {
+  text-align: left;
+  padding:5px;
+}
+/* RIVACY POLICY END */
