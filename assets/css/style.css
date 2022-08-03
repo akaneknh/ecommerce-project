@@ -632,9 +632,35 @@ form {
   padding: 5px 10px;
 }
 
+.form-item label {
+  width: 300px;
+  text-align: left;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+}
+
+.form-item input {
+  position: relative;
+  height: 20px;
+  width: 300px;
+  border: 0.5px solid #666666;
+  border-radius: 5px;
+  font-size: 18px;
+  padding: 5px 5px;
+}
+
 .form-footer a {
   font-size: 10px;
   color: #333;
+}
+
+.wrongInfo {
+  width: 400px;
+  color: #e86c56;
 }
 
 /* LOGIN END */
