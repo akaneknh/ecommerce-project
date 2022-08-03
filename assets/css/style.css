@@ -52,7 +52,7 @@ footer {
   align-items: center;
   justify-content: center;
   row-gap: 30px;
-  height: 120px;
+  height: 200px;
   width: 100%;
   background-color: #242c40;
 }
@@ -106,6 +106,7 @@ footer aside {
 
 .item a:hover{
  background-color: rgba(232, 232, 232, 0.304);
+ transition: 0.3s;
 }
 
 .item-pic {
@@ -320,6 +321,7 @@ header i {
 
 .gnav_wrapper li a:hover {
   background-color: rgba(136, 136, 136, 0.296);
+  transition: 0.3s;
 }
 
 .gnav_wrapper li a {
@@ -509,6 +511,25 @@ select {
   flex-direction: column;
   row-gap: 30px;
   margin-top: 30px;
+}
+
+.i {
+  font-size: 30px;
+}
+
+button:focus,
+input:focus {
+  outline:0;
+}
+
+.minus-btn, .plus-btn {
+  width: 30px;
+  height: 30px;
+  background-color: rgb(227, 226, 226);
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  margin:0 20px;
 }
 
 /* SHOPPING CART END */
@@ -798,3 +819,4 @@ aside p {
   padding:5px;
 }
 /* RIVACY POLICY END */
+
