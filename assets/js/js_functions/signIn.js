@@ -58,7 +58,6 @@ jsonApp.controller("Ctrl", ($scope, $rootScope) => {
   let checkBox = document.getElementsByTagName("input")[2];
   $rootScope.emailCookieChecker();
 
-
   // Function for compare and check if input value is matched with json file
   $rootScope.signInChecker = (data, email, password) => {
     for (let obj of data) {
@@ -113,7 +112,27 @@ jsonApp.controller("Ctrl", ($scope, $rootScope) => {
       if (resultLoginData) {
         $rootScope.sessionStorage(resultLoginData);
         $rootScope.getUserInfo();
-        window.location.href = "#!";
+
+        var customer = JSON.parse(sessionStorage.getItem("userInfo"))
+        $rootScope.customerLog = new Customer(
+            customer.userID,
+            customer.firstName,
+            customer.lastName,
+            customer.bornDate,
+            customer.country,
+            customer.address,
+            customer.email,
+            customer.phoneNumber,
+            customer.creditCard,
+            customer.expiryDate
+        );
+
+        if($rootScope.noLogin){
+          window.location.href = "#!";
+        } else {
+          $rootScope.noLogin = true;
+          window.location.href = "#!cart";
+        }
 
         $rootScope.toggleIn = false;
         $rootScope.toggleOut = true;

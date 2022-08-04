@@ -111,7 +111,6 @@ jsonApp.run(($http, $rootScope)=>{
 
 jsonApp.controller('allProducts',($scope,$rootScope, $location)=>{
     $rootScope.logoutBtn = () => {
-        console.log("ENTRE")
         sessionStorage.removeItem("userInfo");
         $rootScope.customerLog = null;
         $rootScope.loginView = true;
@@ -215,8 +214,21 @@ jsonApp.controller('allProducts',($scope,$rootScope, $location)=>{
 
 //This controller is for show the ShoppingCart to the
 jsonApp.controller('cartCtrl',($scope,$rootScope, $location)=>{
+        $scope.older = true;
+        $rootScope.noLogin = true;
     if(ShopingCart.getTotalItems() === 0){
         window.location.href = "#!";
+    }else if($rootScope.customerLog != undefined){
+        console.log("entre joder")
+        $scope.customer = new Customer($rootScope.customerLog.userID, $rootScope.customerLog.firstName, $rootScope.customerLog.lastName,$rootScope.customerLog.bornDate, $rootScope.customerLog.country,$rootScope.customerLog.address, $rootScope.customerLog.email, $rootScope.customerLog.phoneNumber, $rootScope.customerLog.creditCard, $rootScope.customerLog.expiryDate)
+        if(!$scope.customer.isOlder()){
+            swal(
+                "You are under 19 years old",
+                "You can look around the mall, but remember can't check out anything!",
+                "warning"
+            );
+            $scope.older = false;
+        }
     }
     $rootScope.shopingCart = ShopingCart;
     $scope.products = updateArray(ShopingCart.products)
@@ -226,6 +238,7 @@ jsonApp.controller('cartCtrl',($scope,$rootScope, $location)=>{
         if(sessionStorage.getItem("userInfo")){
             window.location.href ="#!order";
         } else {
+            $rootScope.noLogin = false;
             window.location.href ="#!login";
 
         }
