@@ -210,6 +210,7 @@ jsonApp.controller('cartCtrl',($scope,$rootScope, $location)=>{
     }
 
     $scope.btnAddProduct = (product, quantity)=>{
+
         if(quantity == -1){
             ShopingCart.withoutProduct(product.id);
             $rootScope.shopingCart = ShopingCart;
@@ -217,7 +218,7 @@ jsonApp.controller('cartCtrl',($scope,$rootScope, $location)=>{
             localStorage.setItem("ShopingCart", JSON.stringify(ShopingCart));
             window.location.href = "#!cart";
         } else {
-            ShopingCart.addProducts(product.id, quantity);
+            ShopingCart.addProducts(product.id, parseInt(quantity));
             $rootScope.shopingCart = ShopingCart;
             $rootScope.cartItems = ShopingCart.getTotalItems();
             localStorage.setItem("ShopingCart", JSON.stringify(ShopingCart));
@@ -516,7 +517,7 @@ jsonApp.controller('itemCtrl',($scope,$rootScope, $location)=>{
             buttons: false,
             timer: 1000
         })
-        ShopingCart.addProducts(product, quantity);
+        ShopingCart.addProducts(product, parseInt(quantity));
         $rootScope.cartItems = ShopingCart.getTotalItems();
         localStorage.setItem("ShopingCart", JSON.stringify(ShopingCart));
     }
