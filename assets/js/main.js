@@ -208,6 +208,23 @@ jsonApp.controller('cartCtrl',($scope,$rootScope, $location)=>{
 
         }
     }
+
+    $scope.btnAddProduct = (product, quantity)=>{
+        if(quantity == -1){
+            ShopingCart.withoutProduct(product.id);
+            $rootScope.shopingCart = ShopingCart;
+            $rootScope.cartItems = ShopingCart.getTotalItems();
+            localStorage.setItem("ShopingCart", JSON.stringify(ShopingCart));
+            window.location.href = "#!cart";
+        } else {
+            ShopingCart.addProducts(product.id, quantity);
+            $rootScope.shopingCart = ShopingCart;
+            $rootScope.cartItems = ShopingCart.getTotalItems();
+            localStorage.setItem("ShopingCart", JSON.stringify(ShopingCart));
+            window.location.href = "#!cart";
+        }
+
+    }
 });
 
 
@@ -490,6 +507,8 @@ jsonApp.controller('itemCtrl',($scope,$rootScope, $location)=>{
     }
 
     $scope.btnAddProduct = (product, quantity)=>{
+        console.log(product)
+
         swal({
             position: 'top-end',
             icon: 'success',

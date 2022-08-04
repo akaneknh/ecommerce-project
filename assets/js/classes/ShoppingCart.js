@@ -73,7 +73,6 @@ class ShoppingCart{
                 product.updateStock(quantity);
                 this.products.set(product, this.products.get(product) - quantity);
             }
-
             return true;
         } catch(err){
             console.error(err);

@@ -8,11 +8,11 @@
           <span class="cart-item-price">${{product.id.productPrice}}</span>
           <div class="quantity">
               <div class="quantityModi">
-                <button class="plus-btn" type="button" name="button">
+                <button class="plus-btn" type="button" name="button" ng-click="btnAddProduct(product, 1)">
                   <i class="fa-solid fa-plus"></i>
                 </button>
                 <span>{{product.product}}</span>
-                <button class="minus-btn" type="button" name="button">
+                <button class="minus-btn" type="button" name="button" ng-click="btnAddProduct(product, -1)">
                   <i class="fa-solid fa-minus"></i>
                 </button>
               </div>
