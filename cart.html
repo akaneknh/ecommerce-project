@@ -7,15 +7,23 @@
           <span>{{product.id.productSize}}</span>
           <span class="cart-item-price">${{product.id.productPrice}}</span>
           <div class="quantity">
-              <span>{{product.product}}</span>
-            <select>
+              <div class="quantityModi">
+                <button class="plus-btn" type="button" name="button">
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+                <span>{{product.product}}</span>
+                <button class="minus-btn" type="button" name="button">
+                  <i class="fa-solid fa-minus"></i>
+                </button>
+              </div>
+            <!-- <select>
               <option value="0">Quantity</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
               <option value="5">5</option>
-            </select>
+            </select> -->
           </div>    
     </div>
 

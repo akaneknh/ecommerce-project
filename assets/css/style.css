@@ -24,7 +24,26 @@ main {
 h2 {
   font-size: 30px;
   margin: 20px 0;
+  color: #333;
 }
+
+h3 {
+  color: #555;
+}
+
+p {
+  color: #555;
+}
+
+div > .ng-binding{
+  color: #555;
+  font-weight: 500;
+}
+
+li {
+  color: #555;
+}
+
 
 /* FOOTER START */
 footer {
@@ -33,7 +52,7 @@ footer {
   align-items: center;
   justify-content: center;
   row-gap: 30px;
-  height: 120px;
+  height: 200px;
   width: 100%;
   background-color: #242c40;
 }
@@ -87,6 +106,7 @@ footer aside {
 
 .item a:hover{
  background-color: rgba(232, 232, 232, 0.304);
+ transition: 0.3s;
 }
 
 .item-pic {
@@ -114,6 +134,10 @@ footer aside {
   color: #fff;
 }
 
+.hero h2 {
+  color: #fff;
+}
+
 .hero-wine {
   width: 100%;
   height: 300px;
@@ -124,6 +148,10 @@ footer aside {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #fff;
+}
+
+.hero-wine h2 {
   color: #fff;
 }
 
@@ -140,6 +168,10 @@ footer aside {
   color: #fff;
 }
 
+.hero-beer h2 {
+  color: #fff;
+}
+
 .hero-other {
   width: 100%;
   height: 300px;
@@ -153,6 +185,10 @@ footer aside {
   color: #fff;
 }
 
+.hero-other h2 {
+  color: #fff;
+}
+
 .hero-sake {
   width: 100%;
   height: 300px;
@@ -163,6 +199,26 @@ footer aside {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #fff;
+}
+
+.hero-sake h2 {
+  color: #fff;
+}
+
+.hero-terms {
+  width: 100%;
+  height: 300px;
+  background-image: url(../img/terms.png);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-terms h2 {
   color: #fff;
 }
 
@@ -265,6 +321,7 @@ header i {
 
 .gnav_wrapper li a:hover {
   background-color: rgba(136, 136, 136, 0.296);
+  transition: 0.3s;
 }
 
 .gnav_wrapper li a {
@@ -456,6 +513,25 @@ select {
   margin-top: 30px;
 }
 
+.i {
+  font-size: 30px;
+}
+
+button:focus,
+input:focus {
+  outline:0;
+}
+
+.minus-btn, .plus-btn {
+  width: 30px;
+  height: 30px;
+  background-color: rgb(227, 226, 226);
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  margin:0 20px;
+}
+
 /* SHOPPING CART END */
 
 /* ORDER START*/
@@ -616,9 +692,35 @@ form {
   padding: 5px 10px;
 }
 
+.form-item label {
+  width: 300px;
+  text-align: left;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+}
+
+.form-item input {
+  position: relative;
+  height: 20px;
+  width: 300px;
+  border: 0.5px solid #666666;
+  border-radius: 5px;
+  font-size: 18px;
+  padding: 5px 5px;
+}
+
 .form-footer a {
   font-size: 10px;
   color: #333;
+}
+
+.wrongInfo {
+  width: 400px;
+  color: #e86c56;
 }
 
 /* LOGIN END */
@@ -690,3 +792,31 @@ aside p {
   background: #ae6e62;
   color: #fff;
 }
+/* NAV CART END */
+
+/* * PRIVACY POLICY START */ 
+.terms {
+  margin: 0 10%;
+}
+
+.terms section {
+  width: 100%;
+  padding: 10px 0;
+}
+.terms div {
+  line-height:28px;
+  width: 100%;
+  padding: 10px 0;
+}
+.terms  p {
+  text-align: left;
+}
+.terms  ul {
+  text-align: left;
+}
+.terms  li {
+  text-align: left;
+  padding:5px;
+}
+/* RIVACY POLICY END */
+
