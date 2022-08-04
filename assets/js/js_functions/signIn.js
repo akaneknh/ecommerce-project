@@ -182,9 +182,10 @@ jsonApp.controller("orderCtrl", ($scope, $rootScope)=>{
   $rootScope.getUserInfo();
 
   $scope.btnOrderComplete = () =>{
-    ShopingCart = null;
+    ShopingCart = new ShoppingCart();
     $rootScope.cartItems = 0;
     window.location.href='#!order-complete';
+    localStorage.removeItem("ShopingCart");
   }
 
 })

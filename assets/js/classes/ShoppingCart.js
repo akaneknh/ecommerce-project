@@ -29,7 +29,7 @@ class ShoppingCart{
      * @return boolean
      */
      addProducts(product, quantity = 1) {
-       try{
+        try{
            if(isNaN(quantity)) throw new Error("The Quantity is not a number");
            if(quantity <= 0) throw new Error("The Quantity less than 0");
            if(this.products.has(product)){

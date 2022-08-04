@@ -66,6 +66,7 @@ jsonApp.config(function ($routeProvider){
 
 //Get the elements from the JSON file
 jsonApp.run(($http, $rootScope)=>{
+
     $rootScope.cartItems = 0;
     $http.get("./assets/files/products.json").then(
         (products)=>{
@@ -109,6 +110,27 @@ jsonApp.run(($http, $rootScope)=>{
 });
 
 jsonApp.controller('allProducts',($scope,$rootScope, $location)=>{
+    $rootScope.logoutBtn = () => {
+        console.log("ENTRE")
+        sessionStorage.removeItem("userInfo");
+        $rootScope.customerLog = null;
+        $rootScope.loginView = true;
+        $rootScope.toggleIn = true;
+        $rootScope.toggleOut = false;
+        $rootScope.email = "";
+        $scope.password = "";
+    };
+
+    if(JSON.parse(localStorage.getItem("ShopingCart"))){
+        ShopingCart.products.clear();
+
+        $scope.shopC = JSON.parse(localStorage.getItem("ShopingCart")).products;
+        $scope.shopC.forEach(function(product){
+            ShopingCart.products.set(new Product(product[0].productID, product[0].productName, product[0].productPrice, product[0].productBrand, product[0].productImage ,product[0].productDescription ,product[0].productSize, product[0].stock, product[0].category), product[1])
+        })
+        $rootScope.cartItems = ShopingCart.getTotalItems();
+    }
+
     if(sessionStorage.getItem("userInfo")){
         var customer = JSON.parse(sessionStorage.getItem("userInfo"))
         $rootScope.customerLog = new Customer(
@@ -215,16 +237,15 @@ jsonApp.controller('cartCtrl',($scope,$rootScope, $location)=>{
             ShopingCart.withoutProduct(product.id);
             $rootScope.shopingCart = ShopingCart;
             $rootScope.cartItems = ShopingCart.getTotalItems();
-            localStorage.setItem("ShopingCart", JSON.stringify(ShopingCart));
             window.location.href = "#!cart";
         } else {
             ShopingCart.addProducts(product.id, parseInt(quantity));
             $rootScope.shopingCart = ShopingCart;
             $rootScope.cartItems = ShopingCart.getTotalItems();
-            localStorage.setItem("ShopingCart", JSON.stringify(ShopingCart));
             window.location.href = "#!cart";
         }
 
+        localStorage.setItem("ShopingCart", JSON.stringify({user:ShopingCart.User, products: Array.from(ShopingCart.products)}));
     }
 });
 
@@ -508,7 +529,7 @@ jsonApp.controller('itemCtrl',($scope,$rootScope, $location)=>{
     }
 
     $scope.btnAddProduct = (product, quantity)=>{
-        console.log(product)
+        console.log(quantity)
 
         swal({
             position: 'top-end',
@@ -517,9 +538,14 @@ jsonApp.controller('itemCtrl',($scope,$rootScope, $location)=>{
             buttons: false,
             timer: 1000
         })
-        ShopingCart.addProducts(product, parseInt(quantity));
+        if(quantity === undefined){
+            ShopingCart.addProducts(product, 1);
+        } else {
+            ShopingCart.addProducts(product, parseInt(quantity));
+
+        }
         $rootScope.cartItems = ShopingCart.getTotalItems();
-        localStorage.setItem("ShopingCart", JSON.stringify(ShopingCart));
+        localStorage.setItem("ShopingCart", JSON.stringify({user:ShopingCart.User, products: Array.from(ShopingCart.products)}));
     }
 
 });
