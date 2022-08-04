@@ -18,6 +18,7 @@ main {
   flex-direction: column;
   align-items: center;
   padding: 50px;
+  min-height: 55vh;
   flex: 1;
 }
 
@@ -44,7 +45,6 @@ li {
   color: #555;
 }
 
-
 /* FOOTER START */
 footer {
   display: flex;
@@ -52,7 +52,7 @@ footer {
   align-items: center;
   justify-content: center;
   row-gap: 30px;
-  height: 200px;
+  height: 120px;
   width: 100%;
   background-color: #242c40;
 }
@@ -317,6 +317,8 @@ header i {
 .gnav_wrapper li {
   text-align: center;
   width: 100%;
+  color: #fff;
+  font-weight: 400;
 }
 
 .gnav_wrapper li a:hover {
@@ -338,7 +340,7 @@ header i {
 
 /* PAGER START  */
 .pager {
-  margin-top: 20px;
+  margin-top: 80px;
 }
 
 .pager .pagination {
@@ -358,7 +360,8 @@ header i {
 }
 
 .pager .pagination li button, .pager .pagination li a {
-  color: #333;
+  color: #555;
+  font-size: 21px;
   vertical-align: middle;
   position: absolute;
   top: 0;
@@ -472,7 +475,6 @@ select {
 .cart-item-detail-pic {
   height: 100px;
   width: 100px;
-  background-image: url(../img/demo-item.jpeg);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -538,10 +540,15 @@ input:focus {
 .confirm-order-wrap {
   margin-top: 30px;
   margin-bottom: 30px;
-  width: 800px;
+  width: 600px;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   column-gap: 80px;
+}
+
+.yourInfo {
+  padding: 0 0 20px 30px;
 }
 
 .checkout-summary {
@@ -549,14 +556,22 @@ input:focus {
   flex-direction: column;
   row-gap: 20px;
   align-items: center;
+  width: 700px;
 }
 
 .checkout-item {
   display: flex;
   flex-direction: row;
-  column-gap: 20px;
+  column-gap: 15px;
   align-items: center;
   text-align: left;
+  width:700px;
+}
+.checkout-item h3 {
+  font-size: 18px;
+}
+.checkout-item span {
+  font-size: 15px;
 }
 
 .back {
@@ -579,11 +594,11 @@ input:focus {
 
 .user-infomation {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
-  height: 280px;
-  background-color:rgb(240, 240, 240);
+  height: 250px;
+  background-color:rgb(246, 246, 246);
   border-radius: 10px;
   text-align: left;
 }
@@ -617,7 +632,6 @@ input:focus {
 .order-item-detail-pic {
   height: 100px;
   width: 100px;
-  background-image: url(../img/demo-item.jpeg);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -625,15 +639,15 @@ input:focus {
 }
 
 .confirm-order h3 {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .user-infomation table {
-  padding: 30px;
+  padding-left: 50px;
 }
 
 .user-infomation table td {
-  padding: 5px;
+  padding: 5px 5px 0px 30px;
 }
 
 /* ORDER END */
@@ -775,6 +789,7 @@ aside p {
 /* NAV  START*/
 .navCart {
   position: relative;
+  font-size: 12px;
 }
 
 .navCart i{
